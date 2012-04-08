@@ -52,11 +52,13 @@ function minicounter_data_folder() {
  *
  * @return void
  */
-function minicounter_count() { // TODO: error checking
+function minicounter_increase() { // TODO: error checking
     $fn = minicounter_data_folder().'count.txt';
-    $fh = fopen($fn, 'a');
-    fwrite($fh, '*');
-    fclose($fh);
+    if (($fh = fopen($fn, 'a')) === FALSE
+	    || fwrite($fh, '*') === FALSE) {
+	e('cntwriteto', 'file', $fn);
+    }
+    if ($fh !== FALSE) {fclose($fh);}
 }
 
 
@@ -69,23 +71,28 @@ function minicounter_count() { // TODO: error checking
 function minicounter() {
     global $plugin_tx;
 
-    $fn = minicounter_data_folder().'count.txt';
-    $count = filesize($fn);
-    return sprintf($plugin_tx['minicounter']['html'], $count);
+    return sprintf($plugin_tx['minicounter']['html'], $_SESSION['minicounter_count'][CMSIMPLE_ROOT]);
 }
 
 
 /**
- * Count
+ * Set visitor number.
+ */
+if (!isset($_SESSION)) {session_start();}
+if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
+    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = filesize(minicounter_data_folder().'count.txt') + 1;
+}
+
+
+/**
+ * Handle the permanent count.
  */
 if (!$adm && $f != 'login' && !$logout) {
-    if (!isset($_SESSION)) {session_start();}
-
     if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
 	$_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = FALSE;
     } else {
 	if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === FALSE) {
-	    minicounter_count();
+	    minicounter_increase();
 	    $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = TRUE;
 	}
     }

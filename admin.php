@@ -19,12 +19,14 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
  * @return string  The (X)HTML.
  */
 function minicounter_version() {
-    global $pth;
+    global $pth, $plugin_tx;
 
     return '<h1><a href="http://3-magi.net/?CMSimple_XH/Minicounter_XH">Minicounter_XH</a></h1>'."\n"
 	    .tag('img src="'.$pth['folder']['plugins'].'minicounter/minicounter.png" class="minicounter_plugin_icon"')
-	    .'<p>Version: '.MINICOUNTER_VERSION.'</p>'."\n"
+	    .'<p style="margin-top: 2em">Version: '.MINICOUNTER_VERSION.'</p>'."\n"
 	    .'<p>Copyright &copy; 2012 <a href="http://3-magi.net">Christoph M. Becker</a></p>'."\n"
+	    .'<p>'.sprintf($plugin_tx['minicounter']['html_admin'],
+		    filesize(minicounter_data_folder().'count.txt')).'</p>'
 	    .'<p class="minicounter_license">This program is free software: you can redistribute it and/or modify'
 	    .' it under the terms of the GNU General Public License as published by'
 	    .' the Free Software Foundation, either version 3 of the License, or'

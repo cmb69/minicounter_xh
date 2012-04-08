@@ -1,6 +1,7 @@
 <?php
 
 $plugin_tx['minicounter']['html']="<p>You are the %dth visitor since April 7th, 2012.</p>";
+$plugin_tx['minicounter']['html_admin']="<strong>Minicounter counted %d visitors already!</strong>";
 
 $plugin_tx['minicounter']['syscheck_title']="System check";
 $plugin_tx['minicounter']['syscheck_phpversion']="PHP version &ge; %s";
