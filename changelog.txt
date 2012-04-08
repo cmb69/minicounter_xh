@@ -1,2 +1,2 @@
-Version 1beta1 - released TODO
+Version 1beta1 - released 2012-04-08
 cmb	initial release
