@@ -52,7 +52,7 @@ function minicounter_data_folder() {
  *
  * @return void
  */
-function minicounter_increase() { // TODO: error checking
+function minicounter_increase() {
     $fn = minicounter_data_folder().'count.txt';
     if (($fh = fopen($fn, 'a')) === FALSE
 	    || fwrite($fh, '*') === FALSE) {

@@ -59,7 +59,7 @@ function minicounter_system_check() { // RELEASE-TODO
 	    .(version_compare(PHP_VERSION, MINICOUNTER_PHP_VERSION) >= 0 ? $ok : $fail)
 	    .'&nbsp;&nbsp;'.sprintf($ptx['syscheck_phpversion'], MINICOUNTER_PHP_VERSION)
 	    .tag('br').tag('br')."\n";
-    foreach (array() as $ext) {
+    foreach (array('session') as $ext) {
 	$o .= (extension_loaded($ext) ? $ok : $fail)
 		.'&nbsp;&nbsp;'.sprintf($ptx['syscheck_extension'], $ext).tag('br')."\n";
     }
@@ -67,8 +67,12 @@ function minicounter_system_check() { // RELEASE-TODO
 	    .'&nbsp;&nbsp;'.$ptx['syscheck_magic_quotes'].tag('br')."\n";
     $o .= (strtoupper($tx['meta']['codepage']) == 'UTF-8' ? $ok : $warn)
 	    .'&nbsp;&nbsp;'.$ptx['syscheck_encoding'].tag('br').tag('br')."\n";
-    foreach (array('config/', 'css/', 'languages/') as $folder) { // TODO:add data folder
-	$folder = $pth['folder']['plugins'].'minicounter/'.$folder;
+    $folders = array();
+    foreach (array('config/', 'css/', 'languages/') as $folder) {
+	$folders[] = $pth['folder']['plugins'].'minicounter/'.$folder;
+    }
+    $folders[] = minicounter_data_folder();
+    foreach ($folders as $folder) {
 	$o .= (is_writable($folder) ? $ok : $warn)
 		.'&nbsp;&nbsp;'.sprintf($ptx['syscheck_writable'], $folder).tag('br')."\n";
     }
