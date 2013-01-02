@@ -12,5 +12,6 @@ $plugin_tx['minicounter']['syscheck_writable']="Folder '%s' writable";
 
 $plugin_tx['minicounter']['cf_folder_data']="Path to a folder relative to the CMSimple root directory, where to store the plugin's data. E.g. \"userfiles/minicounter/\". Leave empty to store into the plugin's data/ folder.";
 $plugin_tx['minicounter']['cf_start_value']="The value to start counting the visitors. Set greater than 0, if you formerly had installed another visitor counter, or if you want to truncate the counter file.";
+$plugin_tx['minicounter']['cf_ignore_ips']="A comma delimited list of IP address to ignore.";
 
 ?>

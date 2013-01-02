@@ -91,15 +91,17 @@ function Minicounter_count()
  */
 function Minicounter_doCount()
 {
-    global $adm, $f, $logout;
+    global $adm, $f, $logout, $plugin_cf;
 
-    if (!$adm && $f != 'login' && !$logout) {
-	if (!isset($_SESSION)) {
-	    session_start();
-	}
-	if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-	    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = Minicounter_count() + 1;
-	}
+    if (!isset($_SESSION)) {
+	session_start();
+    }
+    if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
+	$_SESSION['minicounter_count'][CMSIMPLE_ROOT] = Minicounter_count() + 1;
+    }
+    $ips = explode(',', $plugin_cf['minicounter']['ignore_ips']);
+    $ips = array_map('trim', $ips);
+    if (!$adm && $f != 'login' && !$logout && !in_array($_SERVER['REMOTE_ADDR'], $ips)) {
 	if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
 	    $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
 	} else {
