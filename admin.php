@@ -59,17 +59,17 @@ function Minicounter_systemCheck() // RELEASE-TODO
     $o = '<h4>' . $ptx['syscheck_title'] . '</h4>'
 	. (version_compare(PHP_VERSION, MINICOUNTER_PHP_VERSION) >= 0 ? $ok : $fail)
 	. '&nbsp;&nbsp;' . sprintf($ptx['syscheck_phpversion'], MINICOUNTER_PHP_VERSION)
-	. tag('br') . tag('br');
+	. tag('br');
     foreach (array('session') as $ext) {
 	$o .= (extension_loaded($ext) ? $ok : $fail)
 	    . '&nbsp;&nbsp;' . sprintf($ptx['syscheck_extension'], $ext) . tag('br');
     }
     $o .= (!get_magic_quotes_runtime() ? $ok : $fail)
-	. '&nbsp;&nbsp;' . $ptx['syscheck_magic_quotes'] . tag('br');
+	. '&nbsp;&nbsp;' . $ptx['syscheck_magic_quotes'] . tag('br') . tag('br');
     $o .= (strtoupper($tx['meta']['codepage']) == 'UTF-8' ? $ok : $warn)
 	. '&nbsp;&nbsp;' . $ptx['syscheck_encoding'] . tag('br') . tag('br');
     $folders = array();
-    foreach (array('config/', 'css/', 'languages/') as $folder) {
+    foreach (array('config/', 'languages/') as $folder) {
 	$folders[] = $pth['folder']['plugins'] . 'minicounter/' . $folder;
     }
     $folders[] = Minicounter_dataFolder();
