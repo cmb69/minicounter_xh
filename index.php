@@ -80,7 +80,7 @@ function minicounter() {
  */
 if (!isset($_SESSION)) {session_start();}
 if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = filesize(minicounter_data_folder().'count.txt') + 1;
+    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = filesize(minicounter_data_folder().'count.txt') + 1 + $plugin_cf['minicounter']['start_value'];
 }
 
 
