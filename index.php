@@ -21,7 +21,8 @@ define('MINICOUNTER_VERSION', '1beta1');
  *
  * @return string
  */
-function minicounter_data_folder() {
+function Minicounter_dataFolder()
+{
     global $pth, $plugin_cf;
 
     $pcf = $plugin_cf['minicounter'];
@@ -29,7 +30,7 @@ function minicounter_data_folder() {
     if ($pcf['folder_data'] == '') {
 	$fn = $pth['folder']['plugins'].'minicounter/data/';
     } else {
-	$fn = $pth['folder']['base'].$pcf['folder_data'];
+	$fn = $pth['folder']['base'] . $pcf['folder_data'];
     }
     if (substr($fn, -1) != '/') {
 	$fn .= '/';
@@ -52,13 +53,16 @@ function minicounter_data_folder() {
  *
  * @return void
  */
-function minicounter_increase() {
-    $fn = minicounter_data_folder().'count.txt';
-    if (($fh = fopen($fn, 'a')) === FALSE
-	    || fwrite($fh, '*') === FALSE) {
+function Minicounter_increase()
+{
+    $fn = Minicounter_dataFolder() . 'count.txt';
+    if (($fh = fopen($fn, 'a')) === false
+	    || fwrite($fh, '*') === false) {
 	e('cntwriteto', 'file', $fn);
     }
-    if ($fh !== FALSE) {fclose($fh);}
+    if ($fh !== false) {
+	fclose($fh);
+    }
 }
 
 
@@ -68,19 +72,25 @@ function minicounter_increase() {
  * @access public
  * @return string  The (X)HTML.
  */
-function minicounter() {
+function minicounter()
+{
     global $plugin_tx;
 
-    return sprintf($plugin_tx['minicounter']['html'], $_SESSION['minicounter_count'][CMSIMPLE_ROOT]);
+    return sprintf($plugin_tx['minicounter']['html'],
+		   $_SESSION['minicounter_count'][CMSIMPLE_ROOT]);
 }
 
 
 /**
  * Set visitor number.
  */
-if (!isset($_SESSION)) {session_start();}
+if (!isset($_SESSION)) {
+    session_start();
+}
 if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = filesize(minicounter_data_folder().'count.txt') + 1 + $plugin_cf['minicounter']['start_value'];
+    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] =
+	filesize(Minicounter_dataFolder().'count.txt') + 1
+	+ $plugin_cf['minicounter']['start_value'];
 }
 
 
@@ -89,11 +99,11 @@ if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
  */
 if (!$adm && $f != 'login' && !$logout) {
     if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
-	$_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = FALSE;
+	$_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
     } else {
-	if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === FALSE) {
+	if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === false) {
 	    minicounter_increase();
-	    $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = TRUE;
+	    $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = true;
 	}
     }
 }
