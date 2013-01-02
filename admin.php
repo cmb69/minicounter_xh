@@ -23,7 +23,7 @@ function Minicounter_version()
     global $pth, $plugin_tx;
 
     return '<h1><a href="http://3-magi.net/?CMSimple_XH/Minicounter_XH">Minicounter_XH</a></h1>'
-	. tag('img src="' . $pth['folder']['plugins'] . 'minicounter/minicounter.png" style="float: left; margin: 0"')
+	. tag('img src="' . $pth['folder']['plugins'] . 'minicounter/minicounter.png" alt="Plugin Icon" style="float: left; margin: 0"')
 	. '<p>Version: ' . MINICOUNTER_VERSION . '</p>'
 	. '<p>Copyright &copy; 2012 <a href="http://3-magi.net">Christoph M. Becker</a></p>'
 	. '<p>' . sprintf($plugin_tx['minicounter']['html_admin'], Minicounter_count()) . '</p>'

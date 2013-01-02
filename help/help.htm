@@ -1,10 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
-<meta name="content-language" content="de">
 <title>Minicounter_XH - Manual</title>
 <link rel="stylesheet" type="text/css" href="./stylesheet.css">
 </head>
@@ -12,7 +11,7 @@
 <body>
 
 <h1>Minicounter_XH - a CMSimple_XH Plugin</h1>
-<img src="../minicounter.png" style="display: block; float: left; margin: 0">
+<img src="../minicounter.png" alt="Plugin Icon" style="float: left; margin: 0">
 <p style="text-align: justify">Minicounter_XH facilitates counting the visitors of your website.
 It's a very minimalistic counter, that will only count the total number of visitors,
 but this could be implemented in a very efficient manner, so it's blazingly fast.
@@ -31,13 +30,12 @@ Contrary to most other counters Minicounter_XH is session based.</p>
 
 <div id="body">
 
-<p><strong>Please do read this documentation! Support might not be given otherwise.
-It's generally a good idea to read the documentation,
+<p><strong>Please do read this documentation
 <em>before</em> you encounter any problems!</strong></p>
 
 <h2><a name="notice">Important Notice</a></h2>
 <p><strong>Minicounter_XH couldn't be tested so far in various environments.
-It is a so called BETA version. Use with caution!</strong></p>
+It is a so called release candidate. Use with caution!</strong></p>
 <div class="toplink"><a href="#">back to top</a></div>
 
 <h2><a name="requirements">Requirements</a></h2>
@@ -47,7 +45,7 @@ It requires a UTF-8 encoded version.</p>
 
 <h2><a name="installation">Installation</a></h2>
 <p>The installation is done as with many other CMSimple_XH plugins.
-See the <a href="http://www.cmsimple-xh.com/wiki/doku.php/manuals:users_manual:plugins:installation">
+See the <a href="http://www.cmsimple-xh.org/wiki/doku.php/installation">
 CMSimple_XH wiki</a> for further details.</p>
 <ol>
 <li><strong>Backup the data on your server.</strong></li>
@@ -68,24 +66,32 @@ when hovering over the help icon with your mouse.</p>
 <p>Localization is done in "Plugin Language".
 You can translate the character strings to your own language,
 or customize them according to your needs.</p>
-<p>The look of Minicounter_XH can be customized in "Plugin Stylesheet".</p>
+<!--<p>The look of Minicounter_XH can be customized in "Plugin Stylesheet".</p>-->
 <div class="toplink"><a href="#">back to top</a></div>
 
 <h2><a name="usage">Usage</a></h2>
-<p>To display the counter on your website insert to a CMSimple page:</p>
+<p>To display the counter on your website insert on a CMSimple page:</p>
 <pre>{{{PLUGIN:minicounter();}}}</pre>
-<p>or to the template:</p>
+<p>or in the template:</p>
 <pre>&lt;?php echo minicounter();?&gt;</pre>
 <p>You can change the text in "Plugin Language".
 Please note the text was chosen this way,
 as Minicounter_XH doesn't display the actual visitor count,
 but insteads keeps a fixed number for every visitor.
 You can see the effect, if you surf your site with two different browsers.</p>
-<p>Also note that there's no setting how long a visitor may be inactive
+<p>Visits in admin mode (including login and logout) are not counted.
+Furthermore it's possible to exclude your IP address completely in the configuration.</p>
+<p>There's no setting how long a visitor may be inactive
 and still be counted as the same visitor.
 All that happens transparently through the use of sessions.
 As long as the session is active, the visitor will be regarded the same.
-When the session will be closed, depends on the session.gc_* PHP settings.</p>
+When the session will be closed, depends on the session.gc_* PHP settings,
+and on the plugin that initially started the session
+(usually the session ends at the latest, when the browser is closed).</p>
+<p>Note that the minicounter data file could be accessed directly by calling its URL.
+A .htaccess file to prohibit this is already contained in the default data folder.
+For other servers or for custom data folders you have to take care for yourself,
+that this file is protected from non authorized access.</p>
 <div class="toplink"><a href="#">back to top</a></div>
 
 <h2><a name="limitations">Limitations</a></h2>
@@ -99,11 +105,7 @@ as it will work only, if the session is accepted by the visitor (typically by ac
 To avoid counting visitors, who don't accept sessions, on every single page hit,
 Minicounter_XH counts only those who do,
 what's possible only, if they call at least two pages.
-So visitors hitting only once won't be counted either.</p>
-<p>Note that the minicounter data file could be accessed directly by calling its URL.
-A .htaccess file to prohibit this is already contained in the default data folder.
-For other servers or for custom data folders you have to take care for yourself,
-that this file is protected from non authorized access.</p>
+IOW: visitors hitting only once won't be counted either.</p>
 <div class="toplink"><a href="#">back to top</a></div>
 
 <h2><a name="license">License</a></h2>
@@ -117,10 +119,10 @@ that this file is protected from non authorized access.</p>
 Many thanks for publishing this icon under CC BY-SA.</p>
 <p>This plugin uses free applications icons from <a href="http://www.aha-soft.com/">Aha-Soft</a>.
 Many thanks for making these icons freely available.</p>
-<!--<p>Many thanks to the community at the <a href="http://www.cmsimpleforum.com">CMSimple forum</a>-->
-<!--for tips, suggestions and testing.</p>-->
+<p>Many thanks to the community at the <a href="http://www.cmsimpleforum.com/">CMSimple_XH-Forum</a>
+for tips, suggestions and testing.</p>
 <p>And last but not least many thanks to <a href="http://harteg.dk/">Peter Harteg</a>,
-the father of CMSimple, and all developers of <a href="http://www.cmsimple-xh.com">CMSimple_XH</a>
+the father of CMSimple, and all developers of <a href="http://www.cmsimple-xh.org/">CMSimple_XH</a>
 without whom this amazing CMS wouldn't exist.</p>
 <div class="toplink"><a href="#">back to top</a></div>
 
