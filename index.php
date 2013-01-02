@@ -67,6 +67,24 @@ function Minicounter_increase()
 
 
 /**
+ * Returns the visitor count.
+ *
+ * @return int
+ */
+function Minicounter_count()
+{
+    global $plugin_cf;
+
+    $count = $plugin_cf['minicounter']['start_value'];
+    $fn = Minicounter_dataFolder() . 'count.txt';
+    if (is_readable($fn)) {
+	$count += filesize($fn);
+    }
+    return $count;
+}
+
+
+/**
  * Returns the visitor counter.
  *
  * @access public
@@ -88,9 +106,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] =
-	filesize(Minicounter_dataFolder().'count.txt') + 1
-	+ $plugin_cf['minicounter']['start_value'];
+    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = Minicounter_count() + 1;
 }
 
 

@@ -26,8 +26,7 @@ function Minicounter_version()
 	. tag('img src="' . $pth['folder']['plugins'] . 'minicounter/minicounter.png" class="minicounter_plugin_icon"')
 	. '<p style="margin-top: 2em">Version: ' . MINICOUNTER_VERSION . '</p>'
 	. '<p>Copyright &copy; 2012 <a href="http://3-magi.net">Christoph M. Becker</a></p>'
-	. '<p>' . sprintf($plugin_tx['minicounter']['html_admin'],
-			  filesize(Minicounter_dataFolder() . 'count.txt')) . '</p>'
+	. '<p>' . sprintf($plugin_tx['minicounter']['html_admin'], Minicounter_count()) . '</p>'
 	. '<p class="minicounter_license">This program is free software: you can redistribute it and/or modify'
 	. ' it under the terms of the GNU General Public License as published by'
 	. ' the Free Software Foundation, either version 3 of the License, or'
