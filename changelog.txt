@@ -1,2 +1,10 @@
+Version 1rc1 - released 2013-01-02
+cmb     added config option start_value (suggested by Tata)
+cmb     added config option ignore_ips (suggested by twc)
+cmb     implemented optional honoring of the DNT header
+cmb     removed stylesheet
+cmb     added German localization and user manual
+cmb     added Slovak and Danish localizations (contributed by Tata resp. maeg)
+
 Version 1beta1 - released 2012-04-08
 cmb	initial release
