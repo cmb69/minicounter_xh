@@ -40,7 +40,7 @@ function Minicounter_dataFolder()
 	    e('cntopen', 'folder', $fn);
 	}
     } else {
-	if (!mkdir($fn, 0777, TRUE)) {
+	if (!mkdir($fn, 0777, true)) {
 	    e('cntwriteto', 'folder', $fn);
 	}
     }
@@ -85,6 +85,34 @@ function Minicounter_count()
 
 
 /**
+ * Handles the visitor counting.
+ *
+ * @return void
+ */
+function Minicounter_doCount()
+{
+    global $adm, $f, $logout;
+
+    if (!$adm && $f != 'login' && !$logout) {
+	if (!isset($_SESSION)) {
+	    session_start();
+	}
+	if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
+	    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = Minicounter_count() + 1;
+	}
+	if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
+	    $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
+	} else {
+	    if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === false) {
+		minicounter_increase();
+		$_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = true;
+	    }
+	}
+    }
+}
+
+
+/**
  * Returns the visitor counter.
  *
  * @access public
@@ -99,29 +127,9 @@ function minicounter()
 }
 
 
-/**
- * Set visitor number.
+/*
+ * Handle the visitor counting.
  */
-if (!isset($_SESSION)) {
-    session_start();
-}
-if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-    $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = Minicounter_count() + 1;
-}
-
-
-/**
- * Handle the permanent count.
- */
-if (!$adm && $f != 'login' && !$logout) {
-    if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
-	$_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
-    } else {
-	if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === false) {
-	    minicounter_increase();
-	    $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = true;
-	}
-    }
-}
+Minicounter_doCount();
 
 ?>
