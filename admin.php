@@ -23,19 +23,19 @@ function Minicounter_version()
     global $pth, $plugin_tx;
 
     return '<h1><a href="http://3-magi.net/?CMSimple_XH/Minicounter_XH">Minicounter_XH</a></h1>'
-	. tag('img src="' . $pth['folder']['plugins'] . 'minicounter/minicounter.png" class="minicounter_plugin_icon"')
-	. '<p style="margin-top: 2em">Version: ' . MINICOUNTER_VERSION . '</p>'
+	. tag('img src="' . $pth['folder']['plugins'] . 'minicounter/minicounter.png" style="float: left; margin: 0"')
+	. '<p>Version: ' . MINICOUNTER_VERSION . '</p>'
 	. '<p>Copyright &copy; 2012 <a href="http://3-magi.net">Christoph M. Becker</a></p>'
 	. '<p>' . sprintf($plugin_tx['minicounter']['html_admin'], Minicounter_count()) . '</p>'
-	. '<p class="minicounter_license">This program is free software: you can redistribute it and/or modify'
+	. '<p style="text-align: justify">This program is free software: you can redistribute it and/or modify'
 	. ' it under the terms of the GNU General Public License as published by'
 	. ' the Free Software Foundation, either version 3 of the License, or'
 	. ' (at your option) any later version.</p>'
-	. '<p class="minicounter_license">This program is distributed in the hope that it will be useful,'
+	. '<p style="text-align: justify">This program is distributed in the hope that it will be useful,'
 	. ' but WITHOUT ANY WARRANTY; without even the implied warranty of'
 	. ' MERCHAN&shy;TABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the'
 	. ' GNU General Public License for more details.</p>'
-	. '<p class="minicounter_license">You should have received a copy of the GNU General Public License'
+	. '<p style="text-align: justify">You should have received a copy of the GNU General Public License'
 	. ' along with this program.  If not, see'
 	. ' <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>';
 }

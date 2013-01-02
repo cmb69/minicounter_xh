@@ -13,7 +13,7 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
 }
 
 
-define('MINICOUNTER_VERSION', '1beta1');
+define('MINICOUNTER_VERSION', '1rc1');
 
 
 /**
