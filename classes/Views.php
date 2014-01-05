@@ -154,6 +154,8 @@ EOT;
     /**
      * Returns the counter view.
      *
+     * @param int $count A visitor count.
+     *
      * @return string (X)HTML.
      *
      * @global array The localization of the plugins.

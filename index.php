@@ -22,8 +22,20 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
     exit;
 }
 
+/**
+ * The model class.
+ */
 require_once $pth['folder']['plugin_classes'] . 'Model.php';
+
+/**
+ * The views class.
+ */
 require_once $pth['folder']['plugin_classes'] . 'Views.php';
+
+/**
+ * The controller class.
+ */
+require_once $pth['folder']['plugin_classes'] . 'Controller.php';
 
 /**
  * The version number.
@@ -31,77 +43,20 @@ require_once $pth['folder']['plugin_classes'] . 'Views.php';
 define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
 
 /**
- * Handles the visitor counting.
- *
- * @return void
- *
- * @global bool              Whether we're in admin mode.
- * @global string            The requested system function.
- * @global bool              Whether logout is requested.
- * @global array             The configuration of the plugins.
- * @global Minicounter_Model The model.
- *
- * @todo Adapt for XH 1.6.
- */
-function Minicounter_doCount()
-{
-    global $adm, $f, $logout, $plugin_cf, $_Minicounter_model;
-
-    $pcf = $plugin_cf['minicounter'];
-    if ($pcf['honor_dnt']
-        && isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT']
-    ) {
-        return;
-    }
-
-    if (session_id() == '') {
-        session_start();
-    }
-    if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-        $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
-            = $_Minicounter_model->count() + 1;
-    }
-    $ips = explode(',', $pcf['ignore_ips']);
-    $ips = array_map('trim', $ips);
-    if (!$adm && $f != 'login' && !$logout
-        && !in_array($_SERVER['REMOTE_ADDR'], $ips)
-    ) {
-        if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
-            $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
-        } else {
-            if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === false) {
-                $_Minicounter_model->increaseCount();
-                $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = true;
-            }
-        }
-    }
-}
-
-/**
  * Returns the visitor counter.
  *
  * @return string (X)HTML.
- *
- * @global array             The localization of the plugins.
- * @global Minicounter_Model The model.
- * @global Minicounter_Views The views.
  */
 function minicounter()
 {
-    global $plugin_tx, $_Minicounter_model, $_Minicounter_views;
+    global $_Minicounter;
 
-    $count = isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])
-        ? $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
-        : $_Minicounter_model->count() + 1;
-    return $_Minicounter_views->counter($count);
+    return $_Minicounter->counter();
 }
 
-$_Minicounter_model = new Minicounter_Model();
-$_Minicounter_views = new Minicounter_Views($_Minicounter_model);
-
-/*
- * Handle the visitor counting.
+/**
+ * The controller.
  */
-Minicounter_doCount();
+$_Minicounter = new Minicounter_Controller();
 
 ?>

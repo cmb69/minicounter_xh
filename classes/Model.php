@@ -67,6 +67,24 @@ class Minicounter_Model
     }
 
     /**
+     * Returns whether an IP address shall be ignored.
+     *
+     * @param string $ip An IP address.
+     *
+     * @return bool
+     *
+     * @global array The configuration of the plugins.
+     */
+    public function ignoreIp($ip)
+    {
+        global $plugin_cf;
+
+        $ips = explode(',', $plugin_cf['minicounter']['ignore_ips']);
+        $ips = array_map('trim', $ips);
+        return in_array($ip, $ips);
+    }
+
+    /**
      * Increases the visitor count by one and returns whether that succeeded.
      *
      * @return void
