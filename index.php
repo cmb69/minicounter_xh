@@ -22,97 +22,29 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
     exit;
 }
 
+require_once $pth['folder']['plugin_classes'] . 'Model.php';
+
 /**
  * The version number.
  */
 define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
 
 /**
- * Returns the data folder.
- *
- * @return string
- *
- * @global array The paths of system files and folders.
- * @global array The configuration of the plugins.
- */
-function Minicounter_dataFolder()
-{
-    global $pth, $plugin_cf;
-
-    $pcf = $plugin_cf['minicounter'];
-
-    if ($pcf['folder_data'] == '') {
-        $fn = $pth['folder']['plugins'] . 'minicounter/data/';
-    } else {
-        $fn = $pth['folder']['base'] . $pcf['folder_data'];
-    }
-    if (substr($fn, -1) != '/') {
-        $fn .= '/';
-    }
-    if (file_exists($fn)) {
-        if (!is_dir($fn)) {
-            e('cntopen', 'folder', $fn);
-        }
-    } else {
-        if (!mkdir($fn, 0777, true)) {
-            e('cntwriteto', 'folder', $fn);
-        }
-    }
-    return $fn;
-}
-
-/**
- * Increases the visitor counter by one.
- *
- * @return void
- */
-function Minicounter_increase()
-{
-    $fn = Minicounter_dataFolder() . 'count.txt';
-    if (($fh = fopen($fn, 'a')) === false
-        || fwrite($fh, '*') === false
-    ) {
-        e('cntwriteto', 'file', $fn);
-    }
-    if ($fh !== false) {
-        fclose($fh);
-    }
-}
-
-/**
- * Returns the visitor count.
- *
- * @return int
- *
- * @global array The configuration of the plugins.
- */
-function Minicounter_count()
-{
-    global $plugin_cf;
-
-    $count = $plugin_cf['minicounter']['start_value'];
-    $fn = Minicounter_dataFolder() . 'count.txt';
-    if (is_readable($fn)) {
-        $count += filesize($fn);
-    }
-    return $count;
-}
-
-/**
  * Handles the visitor counting.
  *
  * @return void
  *
- * @global bool   Whether we're in admin mode.
- * @global string The requested system function.
- * @global bool   Whether logout is requested.
- * @global array  The configuration of the plugins.
+ * @global bool              Whether we're in admin mode.
+ * @global string            The requested system function.
+ * @global bool              Whether logout is requested.
+ * @global array             The configuration of the plugins.
+ * @global Minicounter_Model The model.
  *
  * @todo Adapt for XH 1.6.
  */
 function Minicounter_doCount()
 {
-    global $adm, $f, $logout, $plugin_cf;
+    global $adm, $f, $logout, $plugin_cf, $_Minicounter_model;
 
     $pcf = $plugin_cf['minicounter'];
     if ($pcf['honor_dnt']
@@ -125,7 +57,8 @@ function Minicounter_doCount()
         session_start();
     }
     if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-        $_SESSION['minicounter_count'][CMSIMPLE_ROOT] = Minicounter_count() + 1;
+        $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
+            = $_Minicounter_model->count() + 1;
     }
     $ips = explode(',', $pcf['ignore_ips']);
     $ips = array_map('trim', $ips);
@@ -136,7 +69,7 @@ function Minicounter_doCount()
             $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
         } else {
             if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === false) {
-                minicounter_increase();
+                $_Minicounter_model->increaseCount();
                 $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = true;
             }
         }
@@ -148,17 +81,20 @@ function Minicounter_doCount()
  *
  * @return string (X)HTML.
  *
- * @global array The localization of the plugins.
+ * @global array             The localization of the plugins.
+ * @global Minicounter_Model The model.
  */
 function minicounter()
 {
-    global $plugin_tx;
+    global $plugin_tx, $_Minicounter_model;
 
     $count = isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])
         ? $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
-        : Minicounter_count() + 1;
+        : $_Minicounter_model->count() + 1;
     return sprintf($plugin_tx['minicounter']['html'], $count);
 }
+
+$_Minicounter_model = new Minicounter_Model();
 
 /*
  * Handle the visitor counting.

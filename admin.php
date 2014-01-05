@@ -70,13 +70,14 @@ EOT;
  *
  * @return string (X)HTML.
  *
- * @global array The paths of system files and folders.
- * @global array The localization of the core.
- * @global array The localization of the plugins.
+ * @global array             The paths of system files and folders.
+ * @global array             The localization of the core.
+ * @global array             The localization of the plugins.
+ * @global Minicounter_Model The model.
  */
 function Minicounter_systemCheck()
 {
-    global $pth, $tx, $plugin_tx;
+    global $pth, $tx, $plugin_tx, $_Minicounter_model;
 
     $phpVersion = '5.0.0';
     $ptx = $plugin_tx['minicounter'];
@@ -101,7 +102,7 @@ function Minicounter_systemCheck()
     foreach (array('config/', 'languages/') as $folder) {
         $folders[] = $pth['folder']['plugins'] . 'minicounter/' . $folder;
     }
-    $folders[] = Minicounter_dataFolder();
+    $folders[] = $_Minicounter_model->dataFolder();
     foreach ($folders as $folder) {
         $o .= (is_writable($folder) ? $ok : $warn)
             . '&nbsp;&nbsp;' . sprintf($ptx['syscheck_writable'], $folder)
