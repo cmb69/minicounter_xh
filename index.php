@@ -23,6 +23,7 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
 }
 
 require_once $pth['folder']['plugin_classes'] . 'Model.php';
+require_once $pth['folder']['plugin_classes'] . 'Views.php';
 
 /**
  * The version number.
@@ -83,18 +84,20 @@ function Minicounter_doCount()
  *
  * @global array             The localization of the plugins.
  * @global Minicounter_Model The model.
+ * @global Minicounter_Views The views.
  */
 function minicounter()
 {
-    global $plugin_tx, $_Minicounter_model;
+    global $plugin_tx, $_Minicounter_model, $_Minicounter_views;
 
     $count = isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])
         ? $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
         : $_Minicounter_model->count() + 1;
-    return sprintf($plugin_tx['minicounter']['html'], $count);
+    return $_Minicounter_views->counter($count);
 }
 
 $_Minicounter_model = new Minicounter_Model();
+$_Minicounter_views = new Minicounter_Views($_Minicounter_model);
 
 /*
  * Handle the visitor counting.
