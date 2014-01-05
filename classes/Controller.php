@@ -46,6 +46,7 @@ class Minicounter_Controller
     {
         $this->_model = new Minicounter_Model();
         $this->_views = new Minicounter_Views($this->_model);
+        $this->dispatch();
     }
 
     /**
