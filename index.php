@@ -25,7 +25,7 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
 /**
  * The version number.
  */
-define('MINICOUNTER_VERSION', '1rc1');
+define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
 
 /**
  * Returns the data folder.
