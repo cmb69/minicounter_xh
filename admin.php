@@ -78,7 +78,7 @@ function Minicounter_systemCheck()
 {
     global $pth, $tx, $plugin_tx;
 
-    $phpVersion = '4.0.7';
+    $phpVersion = '5.0.0';
     $ptx = $plugin_tx['minicounter'];
     $imgdir = $pth['folder']['plugins'] . 'minicounter/images/';
     $ok = tag('img src="' . $imgdir . 'ok.png" alt="ok"');
