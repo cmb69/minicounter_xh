@@ -1,0 +1,10 @@
+Version 1rc1 - released 2013-01-02
+* added config option start_value (suggested by Tata)
+* added config option ignore_ips (suggested by twc)
+* implemented optional honoring of the DNT header
+* removed stylesheet
+* added German localization and user manual
+* added Slovak and Danish localizations (contributed by Tata resp. maeg)
+
+Version 1beta1 - released 2012-04-08
+* initial release
