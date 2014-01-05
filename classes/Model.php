@@ -26,6 +26,34 @@
 class Minicounter_Model
 {
     /**
+     * Returns the path of the plugin icon.
+     *
+     * @return string
+     *
+     * @global array The paths of system files and folders.
+     */
+    public function pluginIconPath()
+    {
+        global $pth;
+
+        return $pth['folder']['plugins'] . 'minicounter/minicounter.png';
+    }
+
+    /**
+     * Returns the path of the folder containing the state icons.
+     *
+     * @return string
+     *
+     * @global array The paths of system files and folders.
+     */
+    public function stateIconFolder()
+    {
+        global $pth;
+
+        return $pth['folder']['plugins'] . 'minicounter/images/';
+    }
+
+    /**
      * Returns the path of the data folder; <var>false</var> if it neither does
      * not exist nor can be created.
      *

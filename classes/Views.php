@@ -66,22 +66,20 @@ class Minicounter_Views
      *
      * @return string (X)HTML.
      *
-     * @global array The paths of system files and folders.
      * @global array The localization of the plugins.
-     *
-     * @todo Fix TAGCs.
      */
     public function about()
     {
-        global $pth, $plugin_tx;
+        global $plugin_tx;
 
         $ptx = $plugin_tx['minicounter'];
         $version = MINICOUNTER_VERSION;
+        $pluginIconPath = $this->_model->pluginIconPath();
         $count = sprintf($ptx['html_admin'], $this->_model->count());
         $o = <<<EOT
 <h1><a href="http://3-magi.net/?CMSimple_XH/Minicounter_XH">Minicounter_XH</a></h1>
-<img src="{$pth['folder']['plugins']}minicounter/minicounter.png"
-     alt="Plugin Icon" style="float: left; margin: 0" />
+<img src="$pluginIconPath" alt="Plugin Icon"
+     style="float: left; margin: 0; width: 128px; height: 128px" />
 <p>Version: $version</p>
 <p>Copyright &copy; 2012-2014 <a href="http://3-magi.net">Christoph M. Becker</a></p>
 <p>$count</p>
@@ -111,12 +109,12 @@ EOT;
      *
      * @param string $check     A system check label.
      * @param string $state     A system check state ('ok', 'warn', 'fail').
-     * @param string $imgFolder An image folder path.
      *
      * @return string (X)HTML.
      */
-    protected function systemCheckItem($check, $state, $imgFolder)
+    protected function systemCheckItem($check, $state)
     {
+        $imgFolder = $this->_model->stateIconFolder();
         $o = <<<EOT
 <li><img src="$imgFolder$state.png" alt="$state" /> $check</li>
 EOT;
@@ -130,18 +128,16 @@ EOT;
      *
      * @return string (X)HTML.
      *
-     * @global array The paths of system files and folders.
      * @global array The localization of the plugins.
      */
     public function systemCheck($checks)
     {
-        global $pth, $plugin_tx;
+        global $plugin_tx;
 
         $ptx = $plugin_tx['minicounter'];
-        $imgdir = $pth['folder']['plugins'] . 'minicounter/images/';
         $items = '';
         foreach ($checks as $check => $state) {
-            $items .= $this->systemCheckItem($check, $state, $imgdir);
+            $items .= $this->systemCheckItem($check, $state);
         }
         return <<<EOT
 <h4>$ptx[syscheck_title]</h4>

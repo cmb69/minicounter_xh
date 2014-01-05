@@ -42,6 +42,26 @@ class ModelTest extends PHPUnit_Framework_TestCase
         $this->_model = new Minicounter_Model();
     }
 
+    public function testPluginIconPath()
+    {
+        global $pth;
+
+        $pth = array('folder' => array('plugins' => $this->_basePath));
+        $expected = $this->_basePath . 'minicounter/minicounter.png';
+        $actual = $this->_model->pluginIconPath();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testStateIconFolder()
+    {
+        global $pth;
+
+        $pth = array('folder' => array('plugins' => $this->_basePath));
+        $exptected = $this->_basePath . 'minicounter/images/';
+        $actual = $this->_model->stateIconFolder();
+        $this->assertEquals($exptected, $actual);
+    }
+
     public function testDefaultDataFolder()
     {
         global $pth;
