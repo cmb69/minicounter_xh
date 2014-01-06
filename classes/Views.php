@@ -183,6 +183,19 @@ EOT;
 
         return sprintf($plugin_tx['minicounter']['html'], $count);
     }
+
+    /**
+     * Returns the tracking image view.
+     *
+     * @return string (X)HTML.
+     */
+    public function trackingImage()
+    {
+        $o = <<<EOT
+<img src="?&amp;minicounter_image" width="1" height="1" />
+EOT;
+        return $this->xhtml($o);
+    }
 }
 
 ?>

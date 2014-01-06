@@ -73,6 +73,16 @@ class ViewsTest extends PHPUnit_Framework_TestCase
         $actual = $this->_views->counter(4711);
         $this->assertEquals($expected, $actual);
     }
+
+    public function testTrackingImage()
+    {
+        $matcher = array(
+            'tag' => 'img',
+            'attributes' => array('src' => '?&minicounter_image')
+        );
+        $actual = $this->_views->trackingImage();
+        $this->assertTag($matcher, $actual);
+    }
 }
 
 ?>

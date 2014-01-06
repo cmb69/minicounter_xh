@@ -65,6 +65,9 @@ class Minicounter_Controller
         if ($adm && isset($minicounter) && $minicounter == 'true') {
             $this->administrate();
         }
+        if (isset($_GET['minicounter_image'])) {
+            $this->sendTrackingImage();
+        }
     }
 
     /**
@@ -194,7 +197,25 @@ class Minicounter_Controller
         $count = isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])
             ? $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
             : $this->_model->count() + 1;
-        return $this->_views->counter($count);
+        $o = $this->_views->counter($count);
+        if (empty($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
+            $o .= $this->_views->trackingImage();
+        }
+        return $o;
+    }
+
+    /**
+     * Sends a tracking image.
+     *
+     * @return void
+     */
+    protected function sendTrackingImage()
+    {
+        header('Content-Type: image/gif');
+        echo base64_decode(
+            'R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw=='
+        );
+        exit;
     }
 }
 
