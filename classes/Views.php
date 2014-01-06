@@ -64,11 +64,11 @@ class Minicounter_Views
     /**
      * Returns the plugin's about view.
      *
-     * @return string (X)HTML.
+     * @return string XHTML.
      *
      * @global array The localization of the plugins.
      */
-    public function about()
+    protected function about()
     {
         global $plugin_tx;
 
@@ -76,7 +76,7 @@ class Minicounter_Views
         $version = MINICOUNTER_VERSION;
         $pluginIconPath = $this->_model->pluginIconPath();
         $count = sprintf($ptx['html_admin'], $this->_model->count());
-        $o = <<<EOT
+        return <<<EOT
 <h1><a href="http://3-magi.net/?CMSimple_XH/Minicounter_XH">Minicounter_XH</a></h1>
 <img src="$pluginIconPath" alt="Plugin Icon"
      style="float: left; margin: 0; width: 128px; height: 128px" />
@@ -101,7 +101,6 @@ class Minicounter_Views
     <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
 </p>
 EOT;
-        return $this->xhtml($o);
     }
 
     /**
@@ -110,15 +109,14 @@ EOT;
      * @param string $check     A system check label.
      * @param string $state     A system check state ('ok', 'warn', 'fail').
      *
-     * @return string (X)HTML.
+     * @return string XHTML.
      */
     protected function systemCheckItem($check, $state)
     {
         $imgFolder = $this->_model->stateIconFolder();
-        $o = <<<EOT
+        return <<<EOT
 <li><img src="$imgFolder$state.png" alt="$state" /> $check</li>
 EOT;
-        return $this->xhtml($o);
     }
 
     /**
@@ -126,11 +124,11 @@ EOT;
      *
      * @param array $checks An array of system checks.
      *
-     * @return string (X)HTML.
+     * @return string XHTML.
      *
      * @global array The localization of the plugins.
      */
-    public function systemCheck($checks)
+    protected function systemCheck($checks)
     {
         global $plugin_tx;
 
@@ -145,6 +143,19 @@ EOT;
     $items
 </ul>
 EOT;
+    }
+
+    /**
+     * Returns the plugin information view.
+     *
+     * @param array $checks An array of system checks.
+     *
+     * @return string (X)HTML.
+     */
+    public function info($checks)
+    {
+        $o = $this->about() . '<hr />' . $this->systemCheck($checks);
+        return $this->xhtml($o);
     }
 
     /**

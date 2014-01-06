@@ -121,8 +121,7 @@ class Minicounter_Controller
         $o .= print_plugin_admin('off');
         switch ($admin) {
         case '':
-            $o .= $this->_views->about() . tag('hr')
-                . $this->_views->systemCheck($this->systemChecks());
+            $o .= $this->_views->info($this->systemChecks());
             break;
         default:
             $o .= plugin_admin_common($action, $admin, 'minicounter');

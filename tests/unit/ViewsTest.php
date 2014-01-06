@@ -43,14 +43,14 @@ class ViewsTest extends PHPUnit_Framework_TestCase
         $this->_views = new Minicounter_Views($model);
     }
 
-    public function testAboutShowsVersion()
+    public function testInfoShowsVersion()
     {
         $matcher = array('tag' => 'p', 'content' => '@MINICOUNTER_VERSION@');
-        $actual = $this->_views->about();
+        $actual = $this->_views->info(array());
         $this->assertTag($matcher, $actual);
     }
 
-    public function testSystemCheck()
+    public function testInfoShowsSystemCheck()
     {
         $checks = array('something' => 'ok');
         $matcher = array(
@@ -60,7 +60,7 @@ class ViewsTest extends PHPUnit_Framework_TestCase
                 'only' => array('tag' => 'li')
             )
         );
-        $actual = $this->_views->systemCheck($checks);
+        $actual = $this->_views->info($checks);
         $this->assertTag($matcher, $actual);
     }
 
