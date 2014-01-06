@@ -1,3 +1,11 @@
+Version 1.0 - released 2013-01-06
+* added tracking image to be able to count visitor on first page request
+* added version.nfo
+* added metaconfig.php for CMSimple_XH 1.6
+* revised manuals
+* refactored to MVC architecture
+* improved QA (Phing, PHPCS, PHPCI, PHPDoc, PHPUnit)
+
 Version 1rc1 - released 2013-01-02
 * added config option start_value (suggested by Tata)
 * added config option ignore_ips (suggested by twc)
