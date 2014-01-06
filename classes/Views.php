@@ -72,17 +72,14 @@ class Minicounter_Views
     {
         global $plugin_tx;
 
-        $ptx = $plugin_tx['minicounter'];
         $version = MINICOUNTER_VERSION;
         $pluginIconPath = $this->_model->pluginIconPath();
-        $count = sprintf($ptx['html_admin'], $this->_model->count());
         return <<<EOT
-<h1><a href="http://3-magi.net/?CMSimple_XH/Minicounter_XH">Minicounter_XH</a></h1>
+<h4>{$plugin_tx['minicounter']['about']}</h4>
 <img src="$pluginIconPath" alt="Plugin Icon"
      style="float: left; margin: 0; width: 128px; height: 128px" />
 <p>Version: $version</p>
 <p>Copyright &copy; 2012-2014 <a href="http://3-magi.net">Christoph M. Becker</a></p>
-<p>$count</p>
 <p style="text-align: justify">
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -151,10 +148,23 @@ EOT;
      * @param array $checks An array of system checks.
      *
      * @return string (X)HTML.
+     *
+     * @global array The localization of the plugins.
      */
     public function info($checks)
     {
-        $o = $this->about() . '<hr />' . $this->systemCheck($checks);
+        global $plugin_tx;
+
+        $ptx = $plugin_tx['minicounter'];
+        $count = sprintf($ptx['html_admin'], $this->_model->count());
+        $systemCheck = $this->systemCheck($checks);
+        $about = $this->about();
+        $o = <<<EOT
+<h1>Minicounter_XH</h1>
+<p>$count</p>
+$systemCheck
+$about
+EOT;
         return $this->xhtml($o);
     }
 
