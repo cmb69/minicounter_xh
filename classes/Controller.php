@@ -136,8 +136,6 @@ class Minicounter_Controller
      * @global bool   Whether we're in admin mode.
      * @global string The current system function.
      * @global bool   Whether logout is requested.
-     *
-     * @todo Adapt for XH 1.6.
      */
     protected function ignoreRequest()
     {

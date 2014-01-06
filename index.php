@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Front-end of Minicounter_XH.
+ * Initialization.
  *
  * PHP version 5
  *
@@ -45,6 +45,8 @@ define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
 /**
  * Returns the visitor counter.
  *
+ * A procedural wrapper around Minicounter_Controller::counter() for plugin calls.
+ *
  * @return string (X)HTML.
  */
 function minicounter()
@@ -56,6 +58,8 @@ function minicounter()
 
 /**
  * The controller.
+ *
+ * @var Minicounter_Controller
  */
 $_Minicounter = new Minicounter_Controller();
 

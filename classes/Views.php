@@ -103,8 +103,8 @@ EOT;
     /**
      * Returns the view of a system check item.
      *
-     * @param string $check     A system check label.
-     * @param string $state     A system check state ('ok', 'warn', 'fail').
+     * @param string $check A system check label.
+     * @param string $state A system check state ('ok', 'warn', 'fail').
      *
      * @return string XHTML.
      */
