@@ -118,7 +118,6 @@
             <fileset dir="export">
                 <exclude name="tests/**"/>
                 <exclude name="build.xml"/>
-                <exclude name="minicounter.komodoproject"/>
                 <exclude name="phpcompatinfo.xml"/>
                 <exclude name="TODO"/>
             </fileset>
