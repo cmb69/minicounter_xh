@@ -47,7 +47,7 @@ class ViewsTest extends PHPUnit_Framework_TestCase
     {
         $matcher = array('tag' => 'p', 'content' => '@MINICOUNTER_VERSION@');
         $actual = $this->_views->info(array());
-        $this->assertTag($matcher, $actual);
+        @$this->assertTag($matcher, $actual);
     }
 
     public function testInfoShowsSystemCheck()
@@ -61,7 +61,7 @@ class ViewsTest extends PHPUnit_Framework_TestCase
             )
         );
         $actual = $this->_views->info($checks);
-        $this->assertTag($matcher, $actual);
+        @$this->assertTag($matcher, $actual);
     }
 
     public function testCounterShowsCount()
@@ -81,7 +81,7 @@ class ViewsTest extends PHPUnit_Framework_TestCase
             'attributes' => array('src' => '?&minicounter_image')
         );
         $actual = $this->_views->trackingImage();
-        $this->assertTag($matcher, $actual);
+        @$this->assertTag($matcher, $actual);
     }
 }
 
