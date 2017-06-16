@@ -57,7 +57,7 @@ class Views
         global $plugin_tx;
 
         $ptx = $plugin_tx['minicounter'];
-        $count = sprintf($ptx['html_admin'], $this->model->count());
+        $count = '<strong>' . sprintf($ptx['text_admin'], $this->model->count()) . '</strong>';
         $about = $this->about();
         $o = <<<EOT
 <h1>Minicounter_XH</h1>
@@ -75,7 +75,7 @@ EOT;
     {
         global $plugin_tx;
 
-        return sprintf($plugin_tx['minicounter']['html'], $count);
+        return '<p id="minicounter">' . sprintf($plugin_tx['minicounter']['text'], $count) . '</p>';
     }
 
     /**

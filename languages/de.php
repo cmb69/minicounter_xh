@@ -1,7 +1,7 @@
 <?php
 
-$plugin_tx['minicounter']['html']="<p id=\"minicounter\">Sie sind der %d. Besucher seit dem 7. April 2012.</p>";
-$plugin_tx['minicounter']['html_admin']="<strong>Minicounter hat bereits %d Besucher gezählt!</strong>";
+$plugin_tx['minicounter']['text']="Sie sind der %d. Besucher seit dem 7. April 2012.";
+$plugin_tx['minicounter']['text_admin']="Minicounter hat bereits %d Besucher gezählt!";
 
 $plugin_tx['minicounter']['syscheck_extension']="die PHP-Erweiterung '%s' geladen ist";
 $plugin_tx['minicounter']['syscheck_fail']="Fehler";
