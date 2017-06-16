@@ -19,7 +19,7 @@
     </target>
 
     <target name="compat" description="checks compatibility with PHP CompatInfo">
-        <exec command="phpcompatinfo --configuration phpcompatinfo.xml print --exclude-pattern minicounter ."
+        <exec command="phpcompatinfo analyser:run --alias current"
               logoutput="true"/>
     </target>
 
