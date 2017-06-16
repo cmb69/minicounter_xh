@@ -41,8 +41,6 @@ class Views
      */
     protected function about()
     {
-        global $plugin_tx;
-
         $view = new View('info');
         $view->logo = $this->model->pluginIconPath();
         $view->version = MINICOUNTER_VERSION;
