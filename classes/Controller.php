@@ -42,12 +42,17 @@ class Controller
      */
     protected function dispatch()
     {
+        global $o;
+
         $this->count();
         if (XH_ADM) {
             XH_registerStandardPluginMenuItems(false);
             if (XH_wantsPluginAdministration('minicounter')) {
                 $this->administrate();
             }
+        }
+        if (!isset($_COOKIE['minicounter']) || $_COOKIE['minicounter'] < 0) {
+            $o .= '<img src="?&amp;minicounter_image" width="1" height="1">';
         }
         if (isset($_GET['minicounter_image'])) {
             $this->sendTrackingImage();
@@ -121,9 +126,6 @@ class Controller
         $view = new View('counter');
         $view->count = $count;
         $o = (string) $view;
-        if (!isset($_COOKIE['minicounter']) || $_COOKIE['minicounter'] < 0) {
-            $o .= '<img src="?&amp;minicounter_image" width="1" height="1">';
-        }
         return $o;
     }
 
