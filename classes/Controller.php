@@ -42,11 +42,12 @@ class Controller
      */
     protected function dispatch()
     {
-        global $adm, $minicounter;
-
         $this->count();
-        if ($adm && isset($minicounter) && $minicounter == 'true') {
-            $this->administrate();
+        if (XH_ADM) {
+            XH_registerStandardPluginMenuItems(false);
+            if (XH_wantsPluginAdministration('minicounter')) {
+                $this->administrate();
+            }
         }
         if (isset($_GET['minicounter_image'])) {
             $this->sendTrackingImage();
@@ -80,9 +81,9 @@ class Controller
      */
     protected function ignoreRequest()
     {
-        global $adm, $f, $logout;
+        global $f, $logout;
 
-        return $adm || $f == 'login' || $logout
+        return XH_ADM || $f == 'login' || $logout
             || $this->model->ignoreIp($_SERVER['REMOTE_ADDR']);
     }
 
