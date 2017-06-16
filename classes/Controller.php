@@ -100,21 +100,12 @@ class Controller
         ) {
             return;
         }
-        if (session_id() == '') {
-            session_start();
-        }
-        if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
-            $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
-                = $this->model->count() + 1;
-        }
         if (!$this->ignoreRequest()) {
-            if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
-                $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
-            } else {
-                if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === false) {
-                    $this->model->increaseCount();
-                    $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = true;
-                }
+            if (!isset($_COOKIE['minicounter'])) {
+                setcookie('minicounter', -($this->model->count() + 1));
+            } elseif ($_COOKIE['minicounter'] < 0) {
+                $this->model->increaseCount();
+                setcookie('minicounter', -$_COOKIE['minicounter']);
             }
         }
     }
@@ -124,13 +115,13 @@ class Controller
      */
     public function counter()
     {
-        $count = isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])
-            ? $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
+        $count = isset($_COOKIE['minicounter'])
+            ? $_COOKIE['minicounter']
             : $this->model->count() + 1;
         $view = new View('counter');
         $view->count = $count;
         $o = (string) $view;
-        if (empty($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
+        if (!isset($_COOKIE['minicounter']) || $_COOKIE['minicounter'] < 0) {
             $o .= '<img src="?&amp;minicounter_image" width="1" height="1">';
         }
         return $o;

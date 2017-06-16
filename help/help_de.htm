@@ -15,8 +15,8 @@
 <p style="text-align: justify">Minicounter_XH ermöglicht es, die Besucher Ihrer
 Website zu zählen. Es ist ein sehr minimalistischer Zähler, der nur die
 Gesamtanzahl der Besucher zählt, aber dies konnte in einer sehr effizienten
-Weise implementiert werden, indem die nötigen Information temporär in einer PHP
-Sitzung gespeichert werden.</p>
+Weise implementiert werden, indem die nötigen Information temporär in einem
+Sitzungscookie gespeichert werden.</p>
 
 <ul id="nav">
 <!--<li><a href="#notice">Wichtiger Hinweis</a></li>-->
@@ -91,11 +91,9 @@ Darüber hinaus ist es möglich IP-Adressen vollständig per Konfigurationsoptio
 auszuschließen.</p>
 <p>Es gibt keine Einstellung für die maximale Inaktivitätsdauer eines Besuchers,
 so dass er weiterhin als der selbe Besucher angesehen wird. Dies wird
-automatisch durch die Verwendung von Sitzungen geregelt. So lange die Sitzung
-aktiv ist, wird der Besucher als der selbe angesehen. Wann die Sitzung
-geschlossen wird, hängt von den session.gc_* PHP-Einstellungen ab, und von dem
-Plugin, das die Sitzung initialisiert hat (normalerweise ended die Sitzung
-spätestens, wenn der Browser geschlossen wird).</p>
+automatisch durch die Verwendung von Sitzungscookies geregelt. So lange die Sitzung
+aktiv ist, wird der Besucher als der selbe angesehen. Die Sitzung endet,
+wenn der Browser geschlossen wird.</p>
 <div class="toplink"><a href="#">zum Seitenanfang</a></div>
 
 <h2 id="limitations">Einschränkungen</h2>
@@ -112,9 +110,8 @@ identifizieren. Von Aufruf zu Aufruf kann sich seine IP-Adresse ändern, wenn er
 sich hinter einem Proxy befindet. Und im Laufe der Zeit ändern sich IPv4
 Adressen sowieso. Andere Techniken wie Browser-Fingerprinting und
 Tracking-Bilder sind ebenfalls nicht zu 100% verlässlich.</p>
-<p>Der Sizungsbasierte Ansatz, den Minicounter_XH verwendet, ist vermutlich noch
-ungenauer, da er nur funktioniert, wenn die Sitzung vom Besucher akzeptiert wird
-(normalerweise durch Akzeptieren des Sitzungs-Cookies).</p>
+<p>Der Sizungscookie basierte Ansatz, den Minicounter_XH verwendet, ist vermutlich noch
+ungenauer, da er nur funktioniert, wenn das Sitzungscookie vom Besucher akzeptiert wird</p>
 </li>
 </ul>
 <div class="toplink"><a href="#">zum Seitenanfang</a></div>
