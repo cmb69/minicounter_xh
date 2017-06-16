@@ -26,6 +26,7 @@
     <target name="mess" description="detects code flaws">
         <phpmd rulesets="codesize,unusedcode">
             <fileset refid="php-sources"/>
+            <fileset refid="unit-tests"/>
          </phpmd>
     </target>
 
