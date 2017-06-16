@@ -8,7 +8,7 @@
  * @category  CMSimple_XH
  * @package   Minicounter
  * @author    Christoph M. Becker <cmbecker69@gmx.de>
- * @copyright 2012-2014 Christoph M. Becker <http://3-magi.net/>
+ * @copyright 2012-2017 Christoph M. Becker <http://3-magi.net/>
  * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @version   SVN: $Id$
  * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
@@ -79,7 +79,7 @@ class Minicounter_Views
 <img src="$pluginIconPath" alt="Plugin Icon"
      style="float: left; margin: 0; width: 128px; height: 128px" />
 <p>Version: $version</p>
-<p>Copyright &copy; 2012-2014 <a href="http://3-magi.net">Christoph M. Becker</a></p>
+<p>Copyright &copy; 2012-2017 <a href="http://3-magi.net">Christoph M. Becker</a></p>
 <p style="text-align: justify">
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
