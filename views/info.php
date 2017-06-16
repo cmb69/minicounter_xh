@@ -1,7 +1,14 @@
-<h4><?=$this->text('about')?></h4>
+<h1>Minicounter</h1>
 <img src="<?=$this->logo()?>" alt="Plugin Icon" style="float: left; margin: 0 1.5em 0.5em 0; width: 128px; height: 128px">
-<p>Version: <?=$this->version()?></p>
-<p>Copyright © 2012-2017 <a href="http://3-magi.net/">Christoph M. Becker</a></p>
+<p>
+    <strong><?=$this->text('text_admin', $this->count)?></strong>
+</p>
+<p>
+    Version: <?=$this->version()?>
+</p>
+<p>
+    Copyright © 2012-2017 <a href="http://3-magi.net/">Christoph M. Becker</a>
+</p>
 <p style="text-align: justify">
     Minicounter_XH is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the Free

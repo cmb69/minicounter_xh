@@ -29,17 +29,11 @@ class Controller
     private $model;
 
     /**
-     * @var Views
-     */
-    private $views;
-
-    /**
      * @return void
      */
     public function __construct()
     {
         $this->model = new Model();
-        $this->views = new Views($this->model);
         $this->dispatch();
     }
 
@@ -69,7 +63,12 @@ class Controller
         $o .= print_plugin_admin('off');
         switch ($admin) {
             case '':
-                $o .= $this->views->info();
+                $view = new View('info');
+                $view->count = $this->model->count();
+                $view->logo = $this->model->pluginIconPath();
+                $view->version = MINICOUNTER_VERSION;
+                $view->checks = (new SystemCheckService)->getChecks();
+                $o .= $view;
                 break;
             default:
                 $o .= plugin_admin_common($action, $admin, 'minicounter');
@@ -127,9 +126,11 @@ class Controller
         $count = isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])
             ? $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
             : $this->model->count() + 1;
-        $o = $this->views->counter($count);
+        $view = new View('counter');
+        $view->count = $count;
+        $o = (string) $view;
         if (empty($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
-            $o .= $this->views->trackingImage();
+            $o .= '<img src="?&amp;minicounter_image" width="1" height="1">';
         }
         return $o;
     }

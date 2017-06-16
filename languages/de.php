@@ -13,8 +13,6 @@ $plugin_tx['minicounter']['syscheck_warning']="Warnung";
 $plugin_tx['minicounter']['syscheck_writable']="'%s' schreibbar ist";
 $plugin_tx['minicounter']['syscheck_xhversion']="die CMSimple_XH-Version ≥ %s";
 
-$plugin_tx['minicounter']['about']="Über Minicounter_XH";
-
 $plugin_tx['minicounter']['cf_folder_data']="Pfad eines Ordners relativ zum CMSimple-Installationverzeichnis, wo die Plugindaten gespeichert werden sollen. Z.B. \"userfiles/minicounter/\". Leer lassen, um in den data/ Ordner des Plugins zu speichern.";
 $plugin_tx['minicounter']['cf_start_value']="Der Startwert für die Besucherzählung. Setzen Sie diesen größer als 0, wenn Sie zuvor einen anderen Besucherzähler installiert hatten, oder wenn Sie die Zählerdatei leeren möchten.";
 $plugin_tx['minicounter']['cf_ignore_ips']="Eine durch Kommas getrennte Liste von zu ignorierenden IP-Adressen.";
