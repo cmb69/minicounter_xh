@@ -3,12 +3,15 @@
 $plugin_tx['minicounter']['html']="<p id=\"minicounter\">You are the %dth visitor since April 7th, 2012.</p>";
 $plugin_tx['minicounter']['html_admin']="<strong>Minicounter counted %d visitors already!</strong>";
 
+$plugin_tx['minicounter']['syscheck_extension']="the PHP extension '%s' is loaded";
+$plugin_tx['minicounter']['syscheck_fail']="failure";
+$plugin_tx['minicounter']['syscheck_message']="Checking that %1\$s … %2\$s";
+$plugin_tx['minicounter']['syscheck_phpversion']="PHP version ≥ %s";
+$plugin_tx['minicounter']['syscheck_success']="okay";
 $plugin_tx['minicounter']['syscheck_title']="System check";
-$plugin_tx['minicounter']['syscheck_phpversion']="PHP version &ge; %s";
-$plugin_tx['minicounter']['syscheck_extension']="Extension \"%s\" loaded";
-$plugin_tx['minicounter']['syscheck_encoding']="Encoding \"UTF-8\" configured";
-$plugin_tx['minicounter']['syscheck_magic_quotes']="Magic quotes runtime off";
-$plugin_tx['minicounter']['syscheck_writable']="Folder \"%s\" writable";
+$plugin_tx['minicounter']['syscheck_warning']="warning";
+$plugin_tx['minicounter']['syscheck_writable']="'%s' is writable";
+$plugin_tx['minicounter']['syscheck_xhversion']="CMSimple_XH version ≥ %s";
 
 $plugin_tx['minicounter']['about']="About Minicounter_XH";
 

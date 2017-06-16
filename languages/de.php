@@ -3,12 +3,15 @@
 $plugin_tx['minicounter']['html']="<p id=\"minicounter\">Sie sind der %d. Besucher seit dem 7. April 2012.</p>";
 $plugin_tx['minicounter']['html_admin']="<strong>Minicounter hat bereits %d Besucher gezählt!</strong>";
 
+$plugin_tx['minicounter']['syscheck_extension']="die PHP-Erweiterung '%s' geladen ist";
+$plugin_tx['minicounter']['syscheck_fail']="Fehler";
+$plugin_tx['minicounter']['syscheck_message']="Prüfe, dass %1\$s … %2\$s";
+$plugin_tx['minicounter']['syscheck_phpversion']="die PHP-Version ≥ %s";
+$plugin_tx['minicounter']['syscheck_success']="OK";
 $plugin_tx['minicounter']['syscheck_title']="System-Prüfung";
-$plugin_tx['minicounter']['syscheck_phpversion']="PHP-Version &ge; %s";
-$plugin_tx['minicounter']['syscheck_extension']="Erweiterung \"%s\" geladen";
-$plugin_tx['minicounter']['syscheck_encoding']="\"UTF-8\" Kodierung eingestellt";
-$plugin_tx['minicounter']['syscheck_magic_quotes']="Magic quotes runtime off";
-$plugin_tx['minicounter']['syscheck_writable']="Ordner \"%s\" beschreibbar";
+$plugin_tx['minicounter']['syscheck_warning']="Warnung";
+$plugin_tx['minicounter']['syscheck_writable']="'%s' schreibbar ist";
+$plugin_tx['minicounter']['syscheck_xhversion']="die CMSimple_XH-Version ≥ %s";
 
 $plugin_tx['minicounter']['about']="Über Minicounter_XH";
 

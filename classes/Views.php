@@ -46,59 +46,24 @@ class Views
         $view = new View('info');
         $view->logo = $this->model->pluginIconPath();
         $view->version = MINICOUNTER_VERSION;
+        $view->checks = (new SystemCheckService)->getChecks();
         return (string) $view;
     }
 
     /**
-     * @param string $check
-     * @param string $state
-     * @return string
-     */
-    protected function systemCheckItem($check, $state)
-    {
-        $imgFolder = $this->model->stateIconFolder();
-        return <<<EOT
-<li><img src="$imgFolder$state.png" alt="$state"> $check</li>
-EOT;
-    }
-
-    /**
      * @param array $checks
      * @return string
      */
-    protected function systemCheck($checks)
-    {
-        global $plugin_tx;
-
-        $ptx = $plugin_tx['minicounter'];
-        $items = '';
-        foreach ($checks as $check => $state) {
-            $items .= $this->systemCheckItem($check, $state);
-        }
-        return <<<EOT
-<h4>$ptx[syscheck_title]</h4>
-<ul style="list-style: none">
-    $items
-</ul>
-EOT;
-    }
-
-    /**
-     * @param array $checks
-     * @return string
-     */
-    public function info($checks)
+    public function info()
     {
         global $plugin_tx;
 
         $ptx = $plugin_tx['minicounter'];
         $count = sprintf($ptx['html_admin'], $this->model->count());
-        $systemCheck = $this->systemCheck($checks);
         $about = $this->about();
         $o = <<<EOT
 <h1>Minicounter_XH</h1>
 <p>$count</p>
-$systemCheck
 $about
 EOT;
         return $o;

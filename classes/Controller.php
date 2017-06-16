@@ -60,38 +60,6 @@ class Controller
     }
 
     /**
-     * @return array
-     */
-    protected function systemChecks()
-    {
-        global $pth, $tx, $plugin_tx;
-
-        $phpVersion = '5.0.0';
-        $ptx = $plugin_tx['minicounter'];
-        $checks = array();
-        $checks[sprintf($ptx['syscheck_phpversion'], $phpVersion)]
-            = version_compare(PHP_VERSION, $phpVersion) >= 0 ? 'ok': 'fail';
-        foreach (array('session') as $ext) {
-            $checks[sprintf($ptx['syscheck_extension'], $ext)]
-                = extension_loaded($ext) ? 'ok' : 'fail';
-        }
-        $checks[$ptx['syscheck_magic_quotes']]
-            = !get_magic_quotes_runtime() ? 'ok' : 'fail';
-        $checks[ $ptx['syscheck_encoding']]
-            =  strtoupper($tx['meta']['codepage']) == 'UTF-8' ? 'ok' : 'warn';
-        $folders = array();
-        foreach (array('config/', 'languages/') as $folder) {
-            $folders[] = $pth['folder']['plugins'] . 'minicounter/' . $folder;
-        }
-        $folders[] = $this->model->dataFolder();
-        foreach ($folders as $folder) {
-            $checks[sprintf($ptx['syscheck_writable'], $folder)]
-                = is_writable($folder) ? 'ok' : 'warn';
-        }
-        return $checks;
-    }
-
-    /**
      * @return void
      */
     protected function administrate()
@@ -101,7 +69,7 @@ class Controller
         $o .= print_plugin_admin('off');
         switch ($admin) {
             case '':
-                $o .= $this->views->info($this->systemChecks());
+                $o .= $this->views->info();
                 break;
             default:
                 $o .= plugin_admin_common($action, $admin, 'minicounter');
