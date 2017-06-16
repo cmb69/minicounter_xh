@@ -29,9 +29,9 @@ define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
  */
 function minicounter()
 {
-    global $_Minicounter;
-
-    return $_Minicounter->counter();
+    ob_start();
+    (new Minicounter\CounterController)->defaultAction();
+    return ob_get_clean();
 }
 
-$_Minicounter = new Minicounter\Controller();
+new Minicounter\Controller();

@@ -116,20 +116,6 @@ class Controller
     }
 
     /**
-     * @return string
-     */
-    public function counter()
-    {
-        $count = isset($_COOKIE['minicounter'])
-            ? $_COOKIE['minicounter']
-            : $this->model->count() + 1;
-        $view = new View('counter');
-        $view->count = $count;
-        $o = (string) $view;
-        return $o;
-    }
-
-    /**
      * @return void
      */
     protected function sendTrackingImage()
