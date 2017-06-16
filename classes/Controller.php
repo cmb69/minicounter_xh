@@ -52,7 +52,7 @@ class Controller
             }
         }
         if (!isset($_COOKIE['minicounter']) || $_COOKIE['minicounter'] < 0) {
-            $o .= '<img src="?&amp;minicounter_image" width="1" height="1">';
+            $o .= '<img src="?&amp;minicounter_image" width="1" height="1" style="position: absolute">';
         }
         if (isset($_GET['minicounter_image'])) {
             $this->sendTrackingImage();
