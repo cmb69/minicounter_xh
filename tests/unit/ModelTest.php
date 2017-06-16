@@ -46,6 +46,7 @@ class ModelTest extends PHPUnit_Framework_TestCase
         vfsStreamWrapper::register();
         vfsStreamWrapper::setRoot(new vfsStreamDirectory('test'));
         $this->basePath = vfsStream::url('test') . '/';
+        mkdir("{$this->basePath}content", 0777);
 
         $this->model = new Model();
     }

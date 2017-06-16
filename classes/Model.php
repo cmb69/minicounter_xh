@@ -50,17 +50,11 @@ class Model
     {
         global $pth;
 
-        $filename = preg_replace(
+        return preg_replace(
             '/(?:\/[^\/]+\/\.\.\/|\/\.\/)$/',
             '/',
             "{$pth['folder']['content']}{$pth['folder']['base']}"
         );
-        if (!file_exists($filename)) {
-            if (!mkdir($filename, 0777, true)) {
-                return false;
-            }
-        }
-        return $filename;
     }
 
     /**
