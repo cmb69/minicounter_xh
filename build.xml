@@ -13,7 +13,7 @@
     </target>
 
     <target name="sniff" description="checks adherence to coding standards">
-        <phpcodesniffer standard="PEAR">
+        <phpcodesniffer standard="PSR2">
             <fileset refid="php-sources"/>
         </phpcodesniffer>
     </target>

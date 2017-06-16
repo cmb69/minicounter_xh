@@ -1,63 +1,50 @@
 <?php
 
 /**
- * The controller class.
+ * Copyright 2012-2017 Christoph M. Becker
  *
- * PHP version 5
+ * This file is part of Minicounter_XH.
  *
- * @category  CMSimple_XH
- * @package   Minicounter
- * @author    Christoph M. Becker <cmbecker69@gmx.de>
- * @copyright 2012-2017 Christoph M. Becker <http://3-magi.net/>
- * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @version   SVN: $Id$
- * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
+ * Minicounter_XH is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Minicounter_XH is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Minicounter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 namespace Minicounter;
 
-/**
- * The controller class.
- *
- * @category CMSimple_XH
- * @package  Minicounter
- * @author   Christoph M. Becker <cmbecker69@gmx.de>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link     http://3-magi.net/?CMSimple_XH/Minicounter_XH
- */
 class Controller
 {
     /**
-     * The model.
-     *
      * @var Model
      */
-    private $_model;
+    private $model;
 
     /**
-     * The views.
-     *
      * @var Views
      */
-    private $_views;
+    private $views;
 
     /**
-     * Initializes a new instance.
+     * @return void
      */
     public function __construct()
     {
-        $this->_model = new Model();
-        $this->_views = new Views($this->_model);
+        $this->model = new Model();
+        $this->views = new Views($this->model);
         $this->dispatch();
     }
 
     /**
-     * Handles all plugin related requests.
-     *
      * @return void
-     *
-     * @global bool   Whether we're in admin mode.
-     * @global bool   Whether the plugin's administration is requested.
      */
     protected function dispatch()
     {
@@ -73,13 +60,7 @@ class Controller
     }
 
     /**
-     * Returns the system checks.
-     *
-     * @return array.
-     *
-     * @global array The paths of system files and folders.
-     * @global array The localization of the core.
-     * @global array The localization of the plugins.
+     * @return array
      */
     protected function systemChecks()
     {
@@ -102,7 +83,7 @@ class Controller
         foreach (array('config/', 'languages/') as $folder) {
             $folders[] = $pth['folder']['plugins'] . 'minicounter/' . $folder;
         }
-        $folders[] = $this->_model->dataFolder();
+        $folders[] = $this->model->dataFolder();
         foreach ($folders as $folder) {
             $checks[sprintf($ptx['syscheck_writable'], $folder)]
                 = is_writable($folder) ? 'ok' : 'warn';
@@ -111,13 +92,7 @@ class Controller
     }
 
     /**
-     * Handles the plugin administration.
-     *
      * @return void
-     *
-     * @global string The (X)HTML to insert into the contents area.
-     * @global string The value of the admin GP parameter.
-     * @global string The value of the action GP paramater.
      */
     protected function administrate()
     {
@@ -125,40 +100,27 @@ class Controller
 
         $o .= print_plugin_admin('off');
         switch ($admin) {
-        case '':
-            $o .= $this->_views->info($this->systemChecks());
-            break;
-        default:
-            $o .= plugin_admin_common($action, $admin, 'minicounter');
+            case '':
+                $o .= $this->views->info($this->systemChecks());
+                break;
+            default:
+                $o .= plugin_admin_common($action, $admin, 'minicounter');
         }
     }
 
     /**
-     * Whether the current request shall be ignored (opposed to being counted).
-     *
      * @return bool
-     *
-     * @global bool   Whether we're in admin mode.
-     * @global string The current system function.
-     * @global bool   Whether logout is requested.
      */
     protected function ignoreRequest()
     {
         global $adm, $f, $logout;
 
         return $adm || $f == 'login' || $logout
-            || $this->_model->ignoreIp($_SERVER['REMOTE_ADDR']);
+            || $this->model->ignoreIp($_SERVER['REMOTE_ADDR']);
     }
 
     /**
-     * Handles the visitor counting.
-     *
      * @return void
-     *
-     * @global bool   Whether we're in admin mode.
-     * @global string The requested system function.
-     * @global bool   Whether logout is requested.
-     * @global array  The configuration of the plugins.
      */
     protected function count()
     {
@@ -175,14 +137,14 @@ class Controller
         }
         if (!isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])) {
             $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
-                = $this->_model->count() + 1;
+                = $this->model->count() + 1;
         }
         if (!$this->ignoreRequest()) {
             if (!isset($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
                 $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = false;
             } else {
                 if ($_SESSION['minicounter_counted'][CMSIMPLE_ROOT] === false) {
-                    $this->_model->increaseCount();
+                    $this->model->increaseCount();
                     $_SESSION['minicounter_counted'][CMSIMPLE_ROOT] = true;
                 }
             }
@@ -190,25 +152,21 @@ class Controller
     }
 
     /**
-     * Returns the visitor counter.
-     *
-     * @return string (X)HTML.
+     * @return string
      */
     public function counter()
     {
         $count = isset($_SESSION['minicounter_count'][CMSIMPLE_ROOT])
             ? $_SESSION['minicounter_count'][CMSIMPLE_ROOT]
-            : $this->_model->count() + 1;
-        $o = $this->_views->counter($count);
+            : $this->model->count() + 1;
+        $o = $this->views->counter($count);
         if (empty($_SESSION['minicounter_counted'][CMSIMPLE_ROOT])) {
-            $o .= $this->_views->trackingImage();
+            $o .= $this->views->trackingImage();
         }
         return $o;
     }
 
     /**
-     * Sends a tracking image.
-     *
      * @return void
      */
     protected function sendTrackingImage()
@@ -220,5 +178,3 @@ class Controller
         exit;
     }
 }
-
-?>

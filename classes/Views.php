@@ -1,57 +1,44 @@
 <?php
 
 /**
- * The views class.
+ * Copyright 2012-2017 Christoph M. Becker
  *
- * PHP version 5
+ * This file is part of Minicounter_XH.
  *
- * @category  CMSimple_XH
- * @package   Minicounter
- * @author    Christoph M. Becker <cmbecker69@gmx.de>
- * @copyright 2012-2017 Christoph M. Becker <http://3-magi.net/>
- * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @version   SVN: $Id$
- * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
+ * Minicounter_XH is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Minicounter_XH is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Minicounter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 namespace Minicounter;
 
-/**
- * The views class.
- *
- * @category CMSimple_XH
- * @package  Minicounter
- * @author   Christoph M. Becker <cmbecker69@gmx.de>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link     http://3-magi.net/?CMSimple_XH/Minicounter_XH
- */
 class Views
 {
     /**
-     * The model.
-     *
      * @var Model
      */
-    private $_model;
+    private $model;
 
     /**
-     * Initializes a new instance.
-     *
-     * @param Model $model A model.
+     * @return void
      */
     public function __construct(Model $model)
     {
-        $this->_model = $model;
+        $this->model = $model;
     }
 
     /**
-     * Returns a string with TAGCs adjusted to the configured markup language.
-     *
-     * @param string $string A string.
-     *
-     * @return string (X)HTML.
-     *
-     * @global array The configuration of the core.
+     * @param string $string
+     * @return string
      */
     protected function xhtml($string)
     {
@@ -64,18 +51,14 @@ class Views
     }
 
     /**
-     * Returns the plugin's about view.
-     *
-     * @return string XHTML.
-     *
-     * @global array The localization of the plugins.
+     * @return string
      */
     protected function about()
     {
         global $plugin_tx;
 
         $version = MINICOUNTER_VERSION;
-        $pluginIconPath = $this->_model->pluginIconPath();
+        $pluginIconPath = $this->model->pluginIconPath();
         return <<<EOT
 <h4>{$plugin_tx['minicounter']['about']}</h4>
 <img src="$pluginIconPath" alt="Plugin Icon"
@@ -103,29 +86,21 @@ EOT;
     }
 
     /**
-     * Returns the view of a system check item.
-     *
-     * @param string $check A system check label.
-     * @param string $state A system check state ('ok', 'warn', 'fail').
-     *
-     * @return string XHTML.
+     * @param string $check
+     * @param string $state
+     * @return string
      */
     protected function systemCheckItem($check, $state)
     {
-        $imgFolder = $this->_model->stateIconFolder();
+        $imgFolder = $this->model->stateIconFolder();
         return <<<EOT
 <li><img src="$imgFolder$state.png" alt="$state" /> $check</li>
 EOT;
     }
 
     /**
-     * Returns the system check view.
-     *
-     * @param array $checks An array of system checks.
-     *
-     * @return string XHTML.
-     *
-     * @global array The localization of the plugins.
+     * @param array $checks
+     * @return string
      */
     protected function systemCheck($checks)
     {
@@ -145,20 +120,15 @@ EOT;
     }
 
     /**
-     * Returns the plugin information view.
-     *
-     * @param array $checks An array of system checks.
-     *
-     * @return string (X)HTML.
-     *
-     * @global array The localization of the plugins.
+     * @param array $checks
+     * @return string
      */
     public function info($checks)
     {
         global $plugin_tx;
 
         $ptx = $plugin_tx['minicounter'];
-        $count = sprintf($ptx['html_admin'], $this->_model->count());
+        $count = sprintf($ptx['html_admin'], $this->model->count());
         $systemCheck = $this->systemCheck($checks);
         $about = $this->about();
         $o = <<<EOT
@@ -171,13 +141,8 @@ EOT;
     }
 
     /**
-     * Returns the counter view.
-     *
-     * @param int $count A visitor count.
-     *
-     * @return string (X)HTML.
-     *
-     * @global array The localization of the plugins.
+     * @param int $count
+     * @return string
      */
     public function counter($count)
     {
@@ -187,9 +152,7 @@ EOT;
     }
 
     /**
-     * Returns the tracking image view.
-     *
-     * @return string (X)HTML.
+     * @return string
      */
     public function trackingImage()
     {
@@ -199,5 +162,3 @@ EOT;
         return $this->xhtml($o);
     }
 }
-
-?>

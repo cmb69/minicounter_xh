@@ -22,17 +22,10 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
     exit;
 }
 
-/**
- * The version number.
- */
 define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
 
 /**
- * Returns the visitor counter.
- *
- * A procedural wrapper around Minicounter_Controller::counter() for plugin calls.
- *
- * @return string (X)HTML.
+ * @return string
  */
 function minicounter()
 {
@@ -41,11 +34,4 @@ function minicounter()
     return $_Minicounter->counter();
 }
 
-/**
- * The controller.
- *
- * @var Minicounter_Controller
- */
 $_Minicounter = new Minicounter\Controller();
-
-?>
