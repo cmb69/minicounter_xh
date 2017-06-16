@@ -54,32 +54,6 @@ class ModelTest extends PHPUnit_Framework_TestCase
     /**
      * @return void
      */
-    public function testPluginIconPath()
-    {
-        global $pth;
-
-        $pth = array('folder' => array('plugins' => $this->basePath));
-        $expected = $this->basePath . 'minicounter/minicounter.png';
-        $actual = $this->model->pluginIconPath();
-        $this->assertEquals($expected, $actual);
-    }
-
-    /**
-     * @return void
-     */
-    public function testStateIconFolder()
-    {
-        global $pth;
-
-        $pth = array('folder' => array('plugins' => $this->basePath));
-        $exptected = $this->basePath . 'minicounter/images/';
-        $actual = $this->model->stateIconFolder();
-        $this->assertEquals($exptected, $actual);
-    }
-
-    /**
-     * @return void
-     */
     public function testDataFolder()
     {
         global $pth;

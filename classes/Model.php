@@ -26,26 +26,6 @@ class Model
     /**
      * @return string
      */
-    public function pluginIconPath()
-    {
-        global $pth;
-
-        return $pth['folder']['plugins'] . 'minicounter/minicounter.png';
-    }
-
-    /**
-     * @return string
-     */
-    public function stateIconFolder()
-    {
-        global $pth;
-
-        return $pth['folder']['plugins'] . 'minicounter/images/';
-    }
-
-    /**
-     * @return string
-     */
     public function dataFolder()
     {
         global $pth;

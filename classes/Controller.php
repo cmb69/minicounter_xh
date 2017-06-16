@@ -59,14 +59,14 @@ class Controller
      */
     protected function administrate()
     {
-        global $o, $admin, $action;
+        global $o, $admin, $action, $pth;
 
         $o .= print_plugin_admin('off');
         switch ($admin) {
             case '':
                 $view = new View('info');
                 $view->count = $this->model->count();
-                $view->logo = $this->model->pluginIconPath();
+                $view->logo = "{$pth['folder']['plugins']}minicounter/minicounter.png";
                 $view->version = MINICOUNTER_VERSION;
                 $view->checks = (new SystemCheckService)->getChecks();
                 $o .= $view;
