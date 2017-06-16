@@ -37,20 +37,6 @@ class Views
     }
 
     /**
-     * @param string $string
-     * @return string
-     */
-    protected function xhtml($string)
-    {
-        global $cf;
-
-        if (!$cf['xhtml']['endtags']) {
-            $string = str_replace(' />', '>', $string);
-        }
-        return $string;
-    }
-
-    /**
      * @return string
      */
     protected function about()
@@ -72,7 +58,7 @@ class Views
     {
         $imgFolder = $this->model->stateIconFolder();
         return <<<EOT
-<li><img src="$imgFolder$state.png" alt="$state" /> $check</li>
+<li><img src="$imgFolder$state.png" alt="$state"> $check</li>
 EOT;
     }
 
@@ -115,7 +101,7 @@ EOT;
 $systemCheck
 $about
 EOT;
-        return $this->xhtml($o);
+        return $o;
     }
 
     /**
@@ -135,8 +121,8 @@ EOT;
     public function trackingImage()
     {
         $o = <<<EOT
-<img src="?&amp;minicounter_image" width="1" height="1" />
+<img src="?&amp;minicounter_image" width="1" height="1">
 EOT;
-        return $this->xhtml($o);
+        return $o;
     }
 }
