@@ -21,7 +21,7 @@
 
 spl_autoload_register(
     function ($class) {
-        $parts = explode('_', $class, 2);
+        $parts = explode('\\', $class, 2);
         if ($parts[0] === 'Minicounter') {
             include_once __DIR__ . "/{$parts[1]}.php";
         }

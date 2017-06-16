@@ -46,6 +46,6 @@ function minicounter()
  *
  * @var Minicounter_Controller
  */
-$_Minicounter = new Minicounter_Controller();
+$_Minicounter = new Minicounter\Controller();
 
 ?>

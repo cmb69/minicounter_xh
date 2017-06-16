@@ -14,6 +14,9 @@
  * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
 
+namespace Minicounter;
+
+use PHPUnit_Framework_TestCase;
 use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStream;
@@ -39,7 +42,7 @@ class ModelTest extends PHPUnit_Framework_TestCase
         vfsStreamWrapper::setRoot(new vfsStreamDirectory('test'));
         $this->_basePath = vfsStream::url('test') . '/';
 
-        $this->_model = new Minicounter_Model();
+        $this->_model = new Model();
     }
 
     public function testPluginIconPath()

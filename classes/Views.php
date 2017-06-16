@@ -14,6 +14,8 @@
  * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
 
+namespace Minicounter;
+
 /**
  * The views class.
  *
@@ -23,21 +25,21 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @link     http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
-class Minicounter_Views
+class Views
 {
     /**
      * The model.
      *
-     * @var Minicounter_Model
+     * @var Model
      */
     private $_model;
 
     /**
      * Initializes a new instance.
      *
-     * @param Minicounter_Model $model A model.
+     * @param Model $model A model.
      */
-    public function __construct(Minicounter_Model $model)
+    public function __construct(Model $model)
     {
         $this->_model = $model;
     }

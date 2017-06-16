@@ -14,6 +14,8 @@
  * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
 
+namespace Minicounter;
+
 /**
  * The model class.
  *
@@ -23,7 +25,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @link     http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
-class Minicounter_Model
+class Model
 {
     /**
      * Returns the path of the plugin icon.

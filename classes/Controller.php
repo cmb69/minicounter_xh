@@ -14,6 +14,8 @@
  * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
 
+namespace Minicounter;
+
 /**
  * The controller class.
  *
@@ -23,19 +25,19 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
  * @link     http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
-class Minicounter_Controller
+class Controller
 {
     /**
      * The model.
      *
-     * @var Minicounter_Model
+     * @var Model
      */
     private $_model;
 
     /**
      * The views.
      *
-     * @var Minicounter_Views
+     * @var Views
      */
     private $_views;
 
@@ -44,8 +46,8 @@ class Minicounter_Controller
      */
     public function __construct()
     {
-        $this->_model = new Minicounter_Model();
-        $this->_views = new Minicounter_Views($this->_model);
+        $this->_model = new Model();
+        $this->_views = new Views($this->_model);
         $this->dispatch();
     }
 

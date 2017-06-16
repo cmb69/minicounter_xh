@@ -14,6 +14,10 @@
  * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
 
+namespace Minicounter;
+
+use PHPUnit_Framework_TestCase;
+ 
 define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
 
 /**
@@ -31,13 +35,13 @@ class ViewsTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $model = $this->getMockBuilder('Minicounter_Model')
+        $model = $this->getMockBuilder('Minicounter\Model')
             ->disableOriginalConstructor()
             ->getMock();
         $model->expects($this->any())
             ->method('count')
             ->will($this->returnValue(1));
-        $this->_views = new Minicounter_Views($model);
+        $this->_views = new Views($model);
     }
 
     public function testInfoShowsVersion()
