@@ -48,18 +48,13 @@ class Model
      */
     public function dataFolder()
     {
-        global $pth, $plugin_cf;
+        global $pth;
 
-        $pcf = $plugin_cf['minicounter'];
-
-        if ($pcf['folder_data'] == '') {
-            $filename = $pth['folder']['plugins'] . 'minicounter/data/';
-        } else {
-            $filename = $pth['folder']['base'] . $pcf['folder_data'];
-            if (substr($filename, -1) != '/') {
-                $filename .= '/';
-            }
-        }
+        $filename = preg_replace(
+            '/(?:\/[^\/]+\/\.\.\/|\/\.\/)$/',
+            '/',
+            "{$pth['folder']['content']}{$pth['folder']['base']}"
+        );
         if (!file_exists($filename)) {
             if (!mkdir($filename, 0777, true)) {
                 return false;
@@ -73,7 +68,7 @@ class Model
      */
     protected function filename()
     {
-        return $this->dataFolder() . 'count.txt';
+        return $this->dataFolder() . 'minicounter.txt';
     }
 
     /**

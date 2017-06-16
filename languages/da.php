@@ -10,6 +10,5 @@
 $plugin_tx['minicounter']['text']="Du er besøgende nr. %d";
 $plugin_tx['minicounter']['text_admin']="Minicounter tæller %d besøgende indtil nu!";
 $plugin_tx['minicounter']['syscheck_title']="System check";
-$plugin_tx['minicounter']['cf_folder_data']="Stien til en mappe i forhold til CMSimple rodmappen, hvor du vil gemme plugin data. F.eks \"userfiles / minicounter /\". Hvis feltet er tomt gemmes data i plugin data / mappe.";
 
 ?>
