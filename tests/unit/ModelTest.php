@@ -79,27 +79,12 @@ class ModelTest extends PHPUnit_Framework_TestCase
     /**
      * @return void
      */
-    public function testDefaultDataFolder()
+    public function testDataFolder()
     {
         global $pth;
 
-        $pth = array('folder' => array('plugins' => $this->basePath));
-        $expected = $this->basePath . 'minicounter/data/';
-        $actual = $this->model->dataFolder();
-        $this->assertEquals($expected, $actual);
-        $this->assertTrue(is_dir($expected));
-    }
-
-    /**
-     * @return void
-     */
-    public function testCustomDataFolder()
-    {
-        global $pth, $plugin_cf;
-
-        $pth = array('folder' => array('base' => $this->basePath));
-        $plugin_cf = array('minicounter' => array('folder_data' => 'custom'));
-        $expected = $this->basePath . 'custom/';
+        $pth = array('folder' => array('base' => './', 'content' => $this->basePath . 'content/'));
+        $expected = $this->basePath . 'content/';
         $actual = $this->model->dataFolder();
         $this->assertEquals($expected, $actual);
         $this->assertTrue(is_dir($expected));
@@ -126,7 +111,7 @@ class ModelTest extends PHPUnit_Framework_TestCase
     {
         global $pth;
 
-        $pth = array('folder' => array('plugins' => $this->basePath));
+        $pth = array('folder' => array('base' => './', 'content' => $this->basePath . 'content/'));
         $oldCount = $this->model->count();
         $this->model->increaseCount();
         $newCount = $this->model->count();
