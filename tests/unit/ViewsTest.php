@@ -14,9 +14,6 @@
  * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
  */
 
-require_once './classes/Model.php';
-require_once './classes/Views.php';
-
 define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
 
 /**

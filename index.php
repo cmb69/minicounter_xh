@@ -23,21 +23,6 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
 }
 
 /**
- * The model class.
- */
-require_once $pth['folder']['plugin_classes'] . 'Model.php';
-
-/**
- * The views class.
- */
-require_once $pth['folder']['plugin_classes'] . 'Views.php';
-
-/**
- * The controller class.
- */
-require_once $pth['folder']['plugin_classes'] . 'Controller.php';
-
-/**
  * The version number.
  */
 define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
