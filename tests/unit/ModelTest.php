@@ -1,17 +1,22 @@
 <?php
 
 /**
- * A test case for the model class.
+ * Copyright 2012-2017 Christoph M. Becker
  *
- * PHP version 5
+ * This file is part of Minicounter_XH.
  *
- * @category  CMSimple_XH
- * @package   Minicounter
- * @author    Christoph M. Becker <cmbecker69@gmx.de>
- * @copyright 2012-2017 Christoph M. Becker <http://3-magi.net/>
- * @license   http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @version   SVN: $Id$
- * @link      http://3-magi.net/?CMSimple_XH/Minicounter_XH
+ * Minicounter_XH is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Minicounter_XH is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Minicounter_XH.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 namespace Minicounter;
@@ -21,73 +26,88 @@ use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStream;
 
-/**
- * A test case for the model class.
- *
- * @category CMSimple_XH
- * @package  Minicounter
- * @author   Christoph M. Becker <cmbecker69@gmx.de>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GNU GPLv3
- * @link     http://3-magi.net/?CMSimple_XH/Minicounter_XH
- */
 class ModelTest extends PHPUnit_Framework_TestCase
 {
-    private $_basePath;
+    /**
+     * @var string
+     */
+    private $basePath;
 
-    private $_model;
+    /**
+     * @var Model
+     */
+    private $model;
 
+    /**
+     * @return void
+     */
     public function setUp()
     {
         vfsStreamWrapper::register();
         vfsStreamWrapper::setRoot(new vfsStreamDirectory('test'));
-        $this->_basePath = vfsStream::url('test') . '/';
+        $this->basePath = vfsStream::url('test') . '/';
 
-        $this->_model = new Model();
+        $this->model = new Model();
     }
 
+    /**
+     * @return void
+     */
     public function testPluginIconPath()
     {
         global $pth;
 
-        $pth = array('folder' => array('plugins' => $this->_basePath));
-        $expected = $this->_basePath . 'minicounter/minicounter.png';
-        $actual = $this->_model->pluginIconPath();
+        $pth = array('folder' => array('plugins' => $this->basePath));
+        $expected = $this->basePath . 'minicounter/minicounter.png';
+        $actual = $this->model->pluginIconPath();
         $this->assertEquals($expected, $actual);
     }
 
+    /**
+     * @return void
+     */
     public function testStateIconFolder()
     {
         global $pth;
 
-        $pth = array('folder' => array('plugins' => $this->_basePath));
-        $exptected = $this->_basePath . 'minicounter/images/';
-        $actual = $this->_model->stateIconFolder();
+        $pth = array('folder' => array('plugins' => $this->basePath));
+        $exptected = $this->basePath . 'minicounter/images/';
+        $actual = $this->model->stateIconFolder();
         $this->assertEquals($exptected, $actual);
     }
 
+    /**
+     * @return void
+     */
     public function testDefaultDataFolder()
     {
         global $pth;
 
-        $pth = array('folder' => array('plugins' => $this->_basePath));
-        $expected = $this->_basePath . 'minicounter/data/';
-        $actual = $this->_model->dataFolder();
+        $pth = array('folder' => array('plugins' => $this->basePath));
+        $expected = $this->basePath . 'minicounter/data/';
+        $actual = $this->model->dataFolder();
         $this->assertEquals($expected, $actual);
         $this->assertTrue(is_dir($expected));
     }
 
+    /**
+     * @return void
+     */
     public function testCustomDataFolder()
     {
         global $pth, $plugin_cf;
 
-        $pth = array('folder' => array('base' => $this->_basePath));
+        $pth = array('folder' => array('base' => $this->basePath));
         $plugin_cf = array('minicounter' => array('folder_data' => 'custom'));
-        $expected = $this->_basePath . 'custom/';
-        $actual = $this->_model->dataFolder();
+        $expected = $this->basePath . 'custom/';
+        $actual = $this->model->dataFolder();
         $this->assertEquals($expected, $actual);
         $this->assertTrue(is_dir($expected));
     }
 
+    /**
+     * @return void
+     */
     public function testIgnoreIp()
     {
         global $plugin_cf;
@@ -95,20 +115,21 @@ class ModelTest extends PHPUnit_Framework_TestCase
         $plugin_cf = array(
             'minicounter' => array('ignore_ips' => '0.1.2.3, 127.0.0.1 ')
         );
-        $actual = $this->_model->ignoreIp('127.0.0.1');
+        $actual = $this->model->ignoreIp('127.0.0.1');
         $this->assertTrue($actual);
     }
 
+    /**
+     * @return void
+     */
     public function testIncreaseCountIncreasesCount()
     {
         global $pth;
 
-        $pth = array('folder' => array('plugins' => $this->_basePath));
-        $oldCount = $this->_model->count();
-        $this->_model->increaseCount();
-        $newCount = $this->_model->count();
+        $pth = array('folder' => array('plugins' => $this->basePath));
+        $oldCount = $this->model->count();
+        $this->model->increaseCount();
+        $newCount = $this->model->count();
         $this->assertEquals($oldCount + 1, $newCount);
     }
 }
-
-?>
