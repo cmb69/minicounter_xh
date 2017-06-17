@@ -22,8 +22,6 @@ if (!defined('CMSIMPLE_XH_VERSION')) {
     exit;
 }
 
-define('MINICOUNTER_VERSION', '@MINICOUNTER_VERSION@');
-
 /**
  * @return string
  */
@@ -34,4 +32,4 @@ function minicounter()
     return ob_get_clean();
 }
 
-new Minicounter\Controller();
+(new Minicounter\Plugin)->run();

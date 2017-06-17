@@ -21,8 +21,10 @@
 
 namespace Minicounter;
 
-class Controller
+class Plugin
 {
+    const VERSION = '@MINICOUNTER_VERSION@';
+
     /**
      * @var Model
      */
@@ -34,19 +36,18 @@ class Controller
     public function __construct()
     {
         $this->model = new Model();
-        $this->dispatch();
     }
 
     /**
      * @return void
      */
-    protected function dispatch()
+    public function run()
     {
         (new MainController)->defaultAction();
         if (XH_ADM) {
             XH_registerStandardPluginMenuItems(false);
             if (XH_wantsPluginAdministration('minicounter')) {
-                $this->administrate();
+                $this->handleAdministration();
             }
         }
         if (isset($_GET['minicounter_image'])) {
@@ -57,7 +58,7 @@ class Controller
     /**
      * @return void
      */
-    protected function administrate()
+    private function handleAdministration()
     {
         global $o, $admin, $action, $pth;
 
@@ -67,7 +68,7 @@ class Controller
                 $view = new View('info');
                 $view->count = $this->model->count();
                 $view->logo = "{$pth['folder']['plugins']}minicounter/minicounter.png";
-                $view->version = MINICOUNTER_VERSION;
+                $view->version = self::VERSION;
                 $view->checks = (new SystemCheckService)->getChecks();
                 $o .= $view;
                 break;
@@ -79,7 +80,7 @@ class Controller
     /**
      * @return void
      */
-    protected function sendTrackingImage()
+    private function sendTrackingImage()
     {
         header('Content-Type: image/gif');
         echo base64_decode(
