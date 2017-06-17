@@ -42,17 +42,12 @@ class Controller
      */
     protected function dispatch()
     {
-        global $o;
-
-        $this->count();
+        (new MainController)->defaultAction();
         if (XH_ADM) {
             XH_registerStandardPluginMenuItems(false);
             if (XH_wantsPluginAdministration('minicounter')) {
                 $this->administrate();
             }
-        }
-        if (!isset($_COOKIE['minicounter']) || $_COOKIE['minicounter'] < 0) {
-            $o .= '<img src="?&amp;minicounter_image" width="1" height="1" style="position: absolute">';
         }
         if (isset($_GET['minicounter_image'])) {
             $this->sendTrackingImage();
@@ -78,40 +73,6 @@ class Controller
                 break;
             default:
                 $o .= plugin_admin_common($action, $admin, 'minicounter');
-        }
-    }
-
-    /**
-     * @return bool
-     */
-    protected function ignoreRequest()
-    {
-        global $f, $logout;
-
-        return XH_ADM || $f == 'login' || $logout
-            || $this->model->ignoreIp($_SERVER['REMOTE_ADDR']);
-    }
-
-    /**
-     * @return void
-     */
-    protected function count()
-    {
-        global $plugin_cf;
-
-        $pcf = $plugin_cf['minicounter'];
-        if ($pcf['honor_dnt']
-            && isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT']
-        ) {
-            return;
-        }
-        if (!$this->ignoreRequest()) {
-            if (!isset($_COOKIE['minicounter'])) {
-                setcookie('minicounter', -($this->model->count() + 1));
-            } elseif ($_COOKIE['minicounter'] < 0) {
-                $this->model->increaseCount();
-                setcookie('minicounter', -$_COOKIE['minicounter']);
-            }
         }
     }
 
