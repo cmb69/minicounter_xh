@@ -21,6 +21,8 @@
 
 namespace Minicounter;
 
+use Pfw\HtmlString;
+
 class View
 {
     /**
