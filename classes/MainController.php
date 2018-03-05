@@ -49,7 +49,7 @@ class MainController
      */
     public function defaultAction()
     {
-        global $o;
+        global $bjs;
 
         if ($this->conf['honor_dnt'] && isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT']) {
             return;
@@ -62,7 +62,7 @@ class MainController
                 setcookie('minicounter', -$_COOKIE['minicounter']);
             }
             if (!isset($_COOKIE['minicounter']) || $_COOKIE['minicounter'] < 0) {
-                $o .= '<img src="?&amp;minicounter_image" width="1" height="1" style="position: absolute">';
+                $bjs .= '<img src="?&amp;minicounter_image" width="1" height="1" style="position: absolute">';
             }
         }
     }
