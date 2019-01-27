@@ -41,7 +41,7 @@ class CounterController
      */
     public function defaultAction()
     {
-        $count = isset($_COOKIE['minicounter']) ? $_COOKIE['minicounter'] : $this->model->count() + 1;
+        $count = isset($_COOKIE['minicounter']) ? abs($_COOKIE['minicounter']) : $this->model->count() + 1;
         $view = new View('counter');
         $view->count = $count;
         $view->render();
