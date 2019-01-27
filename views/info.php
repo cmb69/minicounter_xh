@@ -7,7 +7,7 @@
     Version: <?=$this->version()?>
 </p>
 <p>
-    Copyright © 2012-2017 <a href="http://3-magi.net/">Christoph M. Becker</a>
+    Copyright © 2012-2019 <a href="http://3-magi.net/">Christoph M. Becker</a>
 </p>
 <p style="text-align: justify">
     Minicounter_XH is free software: you can redistribute it and/or modify it

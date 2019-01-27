@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2017 Christoph M. Becker
+ * Copyright 2017-2019 Christoph M. Becker
  *
  * This file is part of Minicounter_XH.
  *

@@ -5,7 +5,7 @@ Minicounter_XH – a CMSimple_XH plugin
 [![beta: 2.0beta1](https://img.shields.io/badge/beta-2.0beta1-red.svg)](https://github.com/cmb69/minicounter_xh/releases/tag/2.0beta1)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
-Copyright 2012-2017 Christoph M. Becker
+Copyright 2012-2019 Christoph M. Becker
 
 Minicounter_XH is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
