@@ -23,7 +23,7 @@ namespace Minicounter;
 
 class Plugin
 {
-    const VERSION = '@MINICOUNTER_VERSION@';
+    const VERSION = '2.0beta1';
 
     /**
      * @var Model
