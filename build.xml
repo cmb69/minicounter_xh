@@ -51,6 +51,7 @@
     </target>
 
     <target name="acceptance" description="runs all acceptance tests">
+        <fail unless="env.CMSIMPLEDIR" message="CMSIMPLEDIR undefined!"/>
         <phpunit bootstrap="classes/required_classes.php" haltonerror="true" haltonfailure="true">
             <formatter type="plain" usefile="false"/>
             <batchtest>
