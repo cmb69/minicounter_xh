@@ -8,10 +8,12 @@ storing the required information in a session cookie.
 ## Table of Contents
 
   - [Requirements](#requirements)
+  - [Download](#download)
   - [Installation](#installation)
   - [Settings](#settings)
   - [Usage](#usage)
   - [Limitations](#limitations)
+  - [Troubleshooting](#troubleshooting)
   - [License](#license)
   - [Credits](#credits)
 
@@ -19,6 +21,10 @@ storing the required information in a session cookie.
 
 Minicounter\_XH is a plugin for CMSimple\_XH ≥ 1.6.3. It requires PHP ≥
 5.5.0.
+
+## Download
+
+The [lastest release](https://github.com/cmb69/minicounter_xh/releases/latest) is available for download on Github.
 
 ## Installation
 
@@ -93,10 +99,25 @@ The session cookie based approach used by Minicounter\_XH is most likely
 even more inaccurate, as it will work only if the session cookie is
 accepted by the visitor.
 
+## Troubleshooting
+
+Report bugs and ask for support either on [Github](https://github.com/cmb69/minicounter_xh/issues)
+or in the [CMSimple_XH Forum](https://cmsimpleforum.com/).
+
 ## License
 
-Minicounter\_XH is licensed under
-[GPLv3](http://www.gnu.org/licenses/gpl.html).
+Minicounter\_XH is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Minicounter\_XH is distributed in the hope that it will be useful,
+but *without any warranty*; without even the implied warranty of
+*merchantibility* or *fitness for a particular purpose*. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Minicounter\_XH.  If not, see <http://www.gnu.org/licenses/>.
 
 Copyright © 2012-2019 Christoph M. Becker
 
