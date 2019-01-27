@@ -1,200 +1,80 @@
 <!DOCTYPE html>
-<html lang="de">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
-<title>Minicounter_XH – Handbuch</title>
-<link rel="stylesheet" type="text/css" href="./stylesheet.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Minicounter_XH – Benutzerhandbuch</title>
+  <style type="text/css">
+    body {
+        font-family: Georgia, serif;
+        line-height: 1.5;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        background: #ffffe1;
+        max-width: 40em;
+    }
+    p {
+        text-align: justify;
+    }
+    pre {
+        color: black;
+        background: #ffe;
+        overflow: auto;
+        padding: 0.2em 0.5em;
+        border: 1px solid silver;
+    }
+  </style>
 </head>
-
 <body>
-
-<article>
-
-<h1>Minicounter_XH – Handbuch</h1>
-<img src="../minicounter.png" alt="Winziger Zähler" style="float: left; margin: 0 1.5em 0.5em 0; width: 128px; height: 128px">
-<p>
-    Minicounter_XH ermöglicht es, die Besucher Ihrer Website zu zählen. Es ist
-    ein sehr minimalistischer Zähler, der nur die Gesamtanzahl der Besucher
-    zählt, aber dies konnte in einer sehr effizienten Weise implementiert
-    werden, indem die nötigen Information temporär in einem Sitzungscookie
-    gespeichert werden.
-</p>
-
-<nav id="nav">
-<h2>Inhaltsverzeichnis</h2>
+<h1 id="minicounter_xh">Minicounter_XH</h1>
+<p>Minicounter_XH ermöglicht es, die Besucher Ihrer Website zu zählen. Es ist ein sehr minimalistischer Zähler, der nur die Gesamtanzahl der Besucher zählt, aber dies konnte in einer sehr effizienten Weise implementiert werden, indem die nötigen Information temporär in einem Sitzungscookie gespeichert werden.</p>
+<h2 id="inhaltsverzeichnis">Inhaltsverzeichnis</h2>
 <ul>
-<li><a href="#notice">Wichtiger Hinweis</a></li>
-<li><a href="#requirements">Voraussetzungen</a></li>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#settings">Einstellungen</a></li>
-<li><a href="#usage">Verwendung</a></li>
-<li><a href="#limitations">Einschränkungen</a></li>
-<li><a href="#license">Lizenz</a></li>
-<li><a href="#credits">Danksagung</a></li>
+<li><a href="#einstellungen">Einstellungen</a></li>
+<li><a href="#verwendung">Verwendung</a></li>
+<li><a href="#einschränkungen">Einschränkungen</a></li>
+<li><a href="#lizenz">Lizenz</a></li>
+<li><a href="#danksagung">Danksagung</a></li>
 </ul>
-</nav>
-
-<section id="notice">
-<h2>Wichtiger Hinweis</h2>
-<p class="important">
-    Minicounter_XH konnte bisher nicht in diversen Umgebungen getestet werden.
-    Es ist eine so genannte Beta-Version. Vorsicht bei der Verwendung!
-</p>
-</section>
-
-<section id="requirements">
-<p>
-    Minicounter_XH ist ein Plugin für CMSimple_XH ≥ 1.6.3. Es benötigt PHP ≥
-    5.5.0 mit der <i>Session</i> Extension.
-</p>
-</section>
-
-<section id="installation">
-<h2>Installation</h2>
-<p>
-    Die Installation erfolgt wie bei vielen anderen CMSimple_XH-Plugins auch. Im
-    <a href="http://www.cmsimple-xh.org/wiki/doku.php/de:installation">
-    CMSimple_XH-Wiki</a> finden Sie weitere Details.
-</p>
-<ol>
-<li class="important">
-    Sichern Sie die Daten auf Ihrem Server.
-</li>
-<li>
-    Entpacken Sie die ZIP-Datei auf Ihrem Rechner.
-</li>
-<li>
-    Laden Sie das ganze Verzeichnis <code>minicounter/</code> auf Ihren Server
-    in CMSimple_XHs <code>plugin/</code> Verzeichnis hoch.
-</li>
-<li>
-    Machen Sie die Unterverzeichnisse <code>config/</code> und
-    <code>languages/</code> beschreibbar.
-</li>
-<li class="important">
-    Navigieren Sie zu <i>Plugins</i> → <i>Minicounter</i> im
-    Administrationsbereich, um zu prüfen, ob alle Voraussetzungen erfüllt sind.
-</li>
+<h2 id="voraussetzungen">Voraussetzungen</h2>
+<p>Minicounter_XH ist ein Plugin für CMSimple_XH ≥ 1.6.3. Es benötigt PHP ≥ 5.5.0 mit der <em>Session</em> Extension.</p>
+<h2 id="installation">Installation</h2>
+<p>Die Installation erfolgt wie bei vielen anderen CMSimple_XH-Plugins auch. Im <a href="http://www.cmsimple-xh.org/wiki/doku.php/de:installation">CMSimple_XH-Wiki</a> finden Sie weitere Details.</p>
+<ol type="1">
+<li>Sichern Sie die Daten auf Ihrem Server.</li>
+<li>Entpacken Sie die ZIP-Datei auf Ihrem Rechner.</li>
+<li>Laden Sie das ganze Verzeichnis <code>minicounter/</code> auf Ihren Server in CMSimple_XHs <code>plugin/</code> Verzeichnis hoch.</li>
+<li>Machen Sie die Unterverzeichnisse <code>config/</code> und <code>languages/</code> beschreibbar.</li>
+<li>Navigieren Sie zu <em>Plugins</em> → <em>Minicounter</em> im Administrationsbereich, um zu prüfen, ob alle Voraussetzungen erfüllt sind.</li>
 </ol>
-</section>
-
-<section id="settings">
-<h2>Einstellungen</h2>
-<p>
-    Die Plugin-Konfiguration erfolgt wie bei vielen anderen CMSimple_XH-Plugins
-    auch im Administrationsbereich der Website. Wählen Sie <i>Plugins</i> →
-    <i>Minicounter</i>.
-</p>
-<p>
-    Sie können die Voreinstellungen von Minicounter_XH unter
-    <i>Konfiguration</i> ändern. Hinweise zu den Optionen werden beim Überfahren
-    der Hilfe-Icons mit der Maus angezeigt.
-</p>
-<p>
-    Die Lokalisierung wird unter <i>Sprache</i> vorgenommen. Sie können die
-    Sprachtexte in Ihre eigene Sprache übersetzen, falls keine entsprechende
-    Sprachdatei zur Verfügung steht, oder diese Ihren Wünschen gemäß anpassen.
-</p>
-<!--
-<p>
-    Das Aussehen von Minicounter_XH kann unter <i>Stylesheet</i> angepasst
-    werden.
-</p>
--->
-</section>
-
-<section id="usage">
-<h2>Verwendung</h2>
-<p>
-    Um den Zähler auf Ihrer Website anzuzeigen fügen Sie auf einer
-    CMSimple-Seite ein:
-</p>
-<pre>{{{minicounter()}}}</pre>
-<p>
-    oder im Template:
-</p>
-<pre>&lt;?=minicounter()?&gt;</pre>
-<p>
-    Sie können den angezeigten Text in der Plugin-Administration unter
-    <i>Sprache</i> ändern. Bitte beachten Sie, dass der Text so gewählt wurde,
-    da Minicounter_XH nicht die eigentliche Besucherzahl anzeigt, sondern eine
-    feste Ordinalzahl für jeden Besucher vergibt. Sie können diesen Effekt
-    sehen, wenn Sie Ihre Website mit zwei verschiedenen Browsern aufrufen.
-</p>
-<p>
-    Besuche im Adminmodus (einschließlich Login und Logout) werden nicht
-    gezählt. Darüber hinaus ist es möglich IP-Adressen vollständig per
-    Konfigurationsoption auszuschließen.
-</p>
-<p>
-    Es gibt keine Einstellung für die maximale Inaktivitätsdauer eines
-    Besuchers, so dass er weiterhin als der selbe Besucher angesehen wird. Dies
-    wird automatisch durch die Verwendung von Sitzungscookies geregelt. So lange
-    die Sitzung aktiv ist, wird der Besucher als der selbe angesehen. Die
-    Sitzung endet, wenn der Browser geschlossen wird.
-</p>
-</section>
-
-<section id="limitations">
-<h2>Einschränkungen</h2>
-<p>
-    Die Verwendung von Besucher-Trackern kann aus Datenschutzgründen durch
-    Gesetze eingeschränkt oder gar ganz verboten sein. Sie können Minicounter_XH
-    so konfigurieren, dass das DNT (Do Not Track) Flag berücksichtigt wird, was
-    ausreichen könnte. Im Zweifel sollten Sie einen Anwalt befragen.
-</p>
-<p>
-    Minicounter_XH ist nicht genau! In der Tat ist es grundsätzlich nicht
-    möglich Besucher einer Website genau zu zählen. Das kommt daher, dass es im
-    allgemeinen unmöglich ist Besucher zuverlässig zu identifizieren. Von Aufruf
-    zu Aufruf kann sich deren IP-Adresse ändern, und mehrere Besucher können die
-    gleiche IP Adresse haben, wenn sie sich hinter einem Proxy befinden. Und im
-    Laufe der Zeit ändern sich IPv4 Adressen sowieso. Andere Techniken wie
-    Browser-Fingerprinting und Tracking-Bilder sind ebenfalls nicht 100%
-    verlässlich. Der Sizungscookie basierte Ansatz, den Minicounter_XH
-    verwendet, ist vermutlich noch ungenauer, da er nur funktioniert, wenn das
-    Sitzungscookie vom Besucher akzeptiert wird.
-</p>
-</section>
-
-<section id="license">
-<h2>Lizenz</h2>
-<p>
-    Minicounter_XH kann unter Einhaltung der <a
-    href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> verwendet werden.
-</p>
-<p>
-    Copyright © 2012-2019 Christoph M. Becker
-</p>
-<p>
-    Slovakische Übersetzung © 2012 Dr. Martin Sereday<br>
-    Dänische Übersetzung © 2012 Jens Maegard
-</p>
-</section>
-
-<section id="credits">
-<h2>Danksagung</h2>
-<p>
-    Das Plugin-Logo wurde von <a href="http://www.pinvoke.com/">Yusuke
-    Kamiyamane</a> entworfen. Vielen Dank für die Veröffentlichung unter CC
-    BY-SA.
-</p>
-<p>
-    Vielen Dank an die Gemeinschaft im <a
-    href="http://www.cmsimpleforum.com/">CMSimple_XH-Forum</a> für Tipps,
-    Vorschläge und das Testen.
-</p>
-<p>
-    Und zu guter letzt vielen Dank an <a href="http://www.harteg.dk/">Peter
-    Harteg</a>, den "Vater" von CMSimple, und allen Entwicklern von <a
-    href="http://www.cmsimple-xh.org/de/">CMSimple_XH</a> ohne die es dieses
-    phantastische CMS nicht gäbe.
-</p>
-</section>
-
-</article>
-
+<h2 id="einstellungen">Einstellungen</h2>
+<p>Die Plugin-Konfiguration erfolgt wie bei vielen anderen CMSimple_XH-Plugins auch im Administrationsbereich der Website. Wählen Sie <em>Plugins</em> → <em>Minicounter</em>.</p>
+<p>Sie können die Voreinstellungen von Minicounter_XH unter <em>Konfiguration</em> ändern. Hinweise zu den Optionen werden beim Überfahren der Hilfe-Icons mit der Maus angezeigt.</p>
+<p>Die Lokalisierung wird unter <em>Sprache</em> vorgenommen. Sie können die Sprachtexte in Ihre eigene Sprache übersetzen, falls keine entsprechende Sprachdatei zur Verfügung steht, oder diese Ihren Wünschen gemäß anpassen.</p>
+<h2 id="verwendung">Verwendung</h2>
+<p>Um den Zähler auf Ihrer Website anzuzeigen fügen Sie auf einer CMSimple-Seite ein:</p>
+<pre><code>{{{minicounter()}}}</code></pre>
+<p>oder im Template:</p>
+<pre><code>&lt;?=minicounter()?&gt;</code></pre>
+<p>Sie können den angezeigten Text in der Plugin-Administration unter <em>Sprache</em> ändern. Bitte beachten Sie, dass der Text so gewählt wurde, da Minicounter_XH nicht die eigentliche Besucherzahl anzeigt, sondern eine feste Ordinalzahl für jeden Besucher vergibt. Sie können diesen Effekt sehen, wenn Sie Ihre Website mit zwei verschiedenen Browsern aufrufen.</p>
+<p>Besuche im Adminmodus (einschließlich Login und Logout) werden nicht gezählt. Darüber hinaus ist es möglich IP-Adressen vollständig per Konfigurationsoption auszuschließen.</p>
+<p>Es gibt keine Einstellung für die maximale Inaktivitätsdauer eines Besuchers, so dass er weiterhin als der selbe Besucher angesehen wird. Dies wird automatisch durch die Verwendung von Sitzungscookies geregelt. So lange die Sitzung aktiv ist, wird der Besucher als der selbe angesehen. Die Sitzung endet, wenn der Browser geschlossen wird.</p>
+<h2 id="einschränkungen">Einschränkungen</h2>
+<p>Die Verwendung von Besucher-Trackern kann aus Datenschutzgründen durch Gesetze eingeschränkt oder gar ganz verboten sein. Sie können Minicounter_XH so konfigurieren, dass das DNT (Do Not Track) Flag berücksichtigt wird, was ausreichen könnte. Im Zweifel sollten Sie einen Anwalt befragen.</p>
+<p>Minicounter_XH ist nicht genau! In der Tat ist es grundsätzlich nicht möglich Besucher einer Website genau zu zählen. Das kommt daher, dass es im allgemeinen unmöglich ist Besucher zuverlässig zu identifizieren. Von Aufruf zu Aufruf kann sich deren IP-Adresse ändern, und mehrere Besucher können die gleiche IP Adresse haben, wenn sie sich hinter einem Proxy befinden. Und im Laufe der Zeit ändern sich IPv4 Adressen sowieso. Andere Techniken wie Browser-Fingerprinting und Tracking-Bilder sind ebenfalls nicht 100% verlässlich. Der Sizungscookie basierte Ansatz, den Minicounter_XH verwendet, ist vermutlich noch ungenauer, da er nur funktioniert, wenn das Sitzungscookie vom Besucher akzeptiert wird.</p>
+<h2 id="lizenz">Lizenz</h2>
+<p>Minicounter_XH kann unter Einhaltung der <a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> verwendet werden.</p>
+<p>Copyright © 2012-2019 Christoph M. Becker</p>
+<p>Slovakische Übersetzung © 2012 Dr. Martin Sereday<br />
+Dänische Übersetzung © 2012 Jens Maegard</p>
+<h2 id="danksagung">Danksagung</h2>
+<p>Das Plugin-Logo wurde von <a href="http://www.pinvoke.com/">Yusuke Kamiyamane</a> entworfen. Vielen Dank für die Veröffentlichung unter CC BY-SA.</p>
+<p>Vielen Dank an die Gemeinschaft im <a href="http://www.cmsimpleforum.com/">CMSimple_XH-Forum</a> für Tipps, Vorschläge und das Testen.</p>
+<p>Und zu guter letzt vielen Dank an <a href="http://www.harteg.dk/">Peter Harteg</a>, den “Vater” von CMSimple, und allen Entwicklern von <a href="http://www.cmsimple-xh.org/de/">CMSimple_XH</a> ohne die es dieses phantastische CMS nicht gäbe.</p>
 </body>
-
 </html>
