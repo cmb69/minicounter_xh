@@ -19,7 +19,7 @@ Sitzungscookie gespeichert werden.
 ## Voraussetzungen
 
 Minicounter\_XH ist ein Plugin für CMSimple\_XH ≥ 1.6.3. Es benötigt PHP
-≥ 5.5.0 mit der *Session* Extension.
+≥ 5.5.0.
 
 ## Installation
 

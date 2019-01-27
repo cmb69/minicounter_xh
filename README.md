@@ -18,7 +18,7 @@ storing the required information in a session cookie.
 ## Requirements
 
 Minicounter\_XH is a plugin for CMSimple\_XH ≥ 1.6.3. It requires PHP ≥
-5.5.0 with the *Session* extension.
+5.5.0.
 
 ## Installation
 

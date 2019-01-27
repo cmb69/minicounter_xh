@@ -3,7 +3,6 @@
 $plugin_tx['minicounter']['text']="You are the %dth visitor since April 7th, 2012.";
 $plugin_tx['minicounter']['text_admin']="Minicounter counted %d visitors already!";
 
-$plugin_tx['minicounter']['syscheck_extension']="the PHP extension '%s' is loaded";
 $plugin_tx['minicounter']['syscheck_fail']="failure";
 $plugin_tx['minicounter']['syscheck_message']="Checking that %1\$s … %2\$s";
 $plugin_tx['minicounter']['syscheck_phpversion']="PHP version ≥ %s";

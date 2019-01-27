@@ -48,7 +48,6 @@ class SystemCheckService
     {
         return array(
             $this->checkPhpVersion('5.5.0'),
-            $this->checkExtension('session'),
             $this->checkXhVersion('1.6.3'),
             $this->checkWritability("$this->pluginFolder/config/"),
             $this->checkWritability("$this->pluginFolder/languages/"),
@@ -68,18 +67,6 @@ class SystemCheckService
         return (object) compact('state', 'label', 'stateLabel');
     }
 
-    /**
-     * @param string $extension
-     * @param bool $isMandatory
-     * @return object
-     */
-    private function checkExtension($extension, $isMandatory = true)
-    {
-        $state = extension_loaded($extension) ? 'success' : ($isMandatory ? 'fail' : 'warning');
-        $label = sprintf($this->lang['syscheck_extension'], $extension);
-        $stateLabel = $this->lang["syscheck_$state"];
-        return (object) compact('state', 'label', 'stateLabel');
-    }
     /**
      * @param string $version
      * @return object
