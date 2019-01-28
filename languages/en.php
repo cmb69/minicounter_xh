@@ -13,7 +13,7 @@ $plugin_tx['minicounter']['syscheck_writable']="'%s' is writable";
 $plugin_tx['minicounter']['syscheck_xhversion']="CMSimple_XH version ≥ %s";
 
 $plugin_tx['minicounter']['cf_start_value']="The value to start counting the visitors. Set greater than 0, if you formerly had installed another visitor counter, or if you have manually truncated the counter file.";
-$plugin_tx['minicounter']['cf_ignore_ips']="A comma delimited list of IP addresses to ignore.";
+$plugin_tx['minicounter']['cf_ignore_ips']="A comma delimited list of IPv4 and/or IPv6 addresses to ignore.";
 $plugin_tx['minicounter']['cf_honor_dnt']="Whether the Do Not Track (DNT) header should be honored: \"1\" (yes) or \"0\" (no).";
 
 ?>
